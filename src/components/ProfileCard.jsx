@@ -14,7 +14,7 @@ export function ProfileCard() {
               loading="eager"
             />
             <img
-              src="/mubashir-cyber.jpeg"
+              src="/MUBASHIR-CYBER.jpeg"
               alt="Mohammed Mubashir Cyber"
               className="profile-image profile-image--dark"
               loading="eager"
