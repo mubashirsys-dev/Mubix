@@ -3,11 +3,11 @@ export const resume = {
   shortName: "Mubix",
   role: "Aspiring Software Developer",
   location: "Aurangabad, Maharashtra, India",
-  phone: "9823786144",
-  email: "mubashir.sys@gmail.com",
-  whatsappNumber: "919823786144",
+  googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd0llGCeKzgnvWg5By9XFV8qqHKB5lsCQi23V_cteCY8nA1ew/viewform",
   instagram: "mubix.o_0",
-  github: "https://github.com/mubix",
+  github: "https://github.com/mubashirsys-dev",
+  x: "https://x.com/mubix.o_0",
+  facebook: "https://www.facebook.com/share/1KhreThqkA/",
   linkedin: "https://www.linkedin.com/in/mohammed-mubashir-aa62a440a",
   logoUrl: "/logo.jpeg",
   resumeUrl: "/resume/Mohammed_Mubashir_Modern_Resume.pdf",
@@ -67,6 +67,51 @@ export const resume = {
   ],
   projects: [
     {
+      title: "FOOTBALL ACADEMY MANAGEMENT WEBSITE",
+      stack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "AI Chatbot", "CMS Panel", "QR System", "Payment Gateway"],
+      stats: ["AI Integrated", "Database Powered", "CMS Enabled", "Responsive Design"],
+      description:
+        "A full-featured football academy management platform designed to handle student/player management, academy operations, communication, registrations, and admin workflows with modern web technologies. The platform includes advanced backend systems, AI chatbot support, QR-based functionality, CMS management tools, and interactive communication features.",
+      purpose:
+        "Automates academy operations and provides a smart ecosystem for students, admins, and operations.",
+      features: [
+        "Fully responsive academy website",
+        "Player/student registration system",
+        "MySQL-powered backend database",
+        "PHP backend workflow integration",
+        "AI chatbot integration for support and navigation",
+        "QR code system for player verification and operations",
+        "Real-time chatting/messaging system",
+        "Admin dashboard & CMS control panel",
+        "Secure Payment Gateway integration",
+        "Gallery and media management",
+        "Program/course management",
+        "Dynamic contact workflow",
+        "Authentication & admin access control",
+        "Database-driven content management",
+        "Mobile responsive UI",
+        "Multi-section management system"
+      ],
+      liveUrl: "https://football-academy.in",
+      featured: true,
+    },
+    {
+      title: "Book Portfolio Website",
+      stack: ["HTML", "CSS", "Vanilla JavaScript", "Vercel"],
+      description:
+        "Portfolio website created for author/book showcase with gallery, author profile, and responsive design.",
+      purpose:
+        "Showcases a drawing book, author information, artwork gallery, and contact section online.",
+      features: [
+        "Modern portfolio website for book promotion",
+        "Book showcase, author profile, gallery, and contact sections",
+        "Responsive static deployment on Vercel",
+      ],
+      githubUrl: "#",
+      liveUrl: "https://fan-ka-tohfa-nazia-afreen.vercel.app",
+      featured: false,
+    },
+    {
       title: "College Management System with AI Chatbot",
       stack: ["C#", "SQL Server", "Windows Forms", "API Integration"],
       description:
@@ -81,38 +126,6 @@ export const resume = {
       ],
       githubUrl: "#",
       liveUrl: null,
-      featured: true,
-    },
-    {
-      title: "Football Academy Website",
-      stack: ["HTML", "CSS", "JavaScript", "PHP"],
-      description:
-        "Professional football academy website with student/player information, gallery, programs showcase, and PHP-powered contact workflow.",
-      purpose:
-        "Promotes a football academy with clear program information and student/player outreach.",
-      features: [
-        "Fully responsive academy website",
-        "Academy information, programs, gallery, and contact system",
-        "PHP-backed contact workflow",
-      ],
-      githubUrl: "#",
-      liveUrl: "https://football-academy.in",
-      featured: false,
-    },
-    {
-      title: "Book Portfolio Website",
-      stack: ["HTML", "CSS", "Vanilla JavaScript", "Vercel"],
-      description:
-        "Portfolio website created for author/book showcase with gallery, author profile, and responsive design — deployed on Vercel.",
-      purpose:
-        "Showcases a drawing book, author information, artwork gallery, and contact section online.",
-      features: [
-        "Modern portfolio website for book promotion",
-        "Book showcase, author profile, gallery, and contact sections",
-        "Responsive static deployment on Vercel",
-      ],
-      githubUrl: "#",
-      liveUrl: "https://fan-ka-tohfa-nazia-afreen.vercel.app",
       featured: false,
     },
   ],

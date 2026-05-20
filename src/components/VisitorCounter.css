@@ -1,0 +1,104 @@
+.visitor-counter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.visitor-counter-card {
+  background-color: #000;
+  color: #0f0;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 1rem 1.5rem;
+  border: 3px solid #fff;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+  text-align: center;
+  position: relative;
+  min-width: 220px;
+  transform: rotate(-1deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+html.dark-theme .visitor-counter-card {
+  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.2);
+  border-color: #333;
+}
+
+.visitor-counter-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
+}
+
+html.dark-theme .visitor-counter-card:hover {
+  box-shadow: 12px 12px 0px rgba(255, 255, 255, 0.2);
+}
+
+.vc-border-line {
+  color: #0f0;
+  font-size: 1rem;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+  opacity: 0.8;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.vc-title {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+}
+
+.pulse-dot-green {
+  width: 10px;
+  height: 10px;
+  background-color: #0f0;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #0f0;
+  animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 255, 0, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+}
+
+.vc-number {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+  margin: 0.25rem 0;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.4);
+  animation: glitch 3s infinite alternate;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); }
+  90% { text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); }
+  95% { text-shadow: 2px 0 0 rgba(255, 0, 0, 0.8), -2px 0 0 rgba(0, 0, 255, 0.8); }
+  100% { text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .visitor-counter-card {
+    min-width: 200px;
+    padding: 1rem;
+  }
+  .vc-number {
+    font-size: 2.5rem;
+  }
+  .vc-title {
+    font-size: 1rem;
+  }
+}

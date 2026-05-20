@@ -110,7 +110,7 @@ export function Chatbot() {
               </div>
             )}
 
-            {messages.length === 1 && !isTyping && (
+            {!isTyping && (
               <div className="chatbot-quick-replies">
                 {quickReplies.map((q) => (
                   <button

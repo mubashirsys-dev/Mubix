@@ -158,6 +158,127 @@ svg {
   outline: none;
 }
 
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Envelope Theme Toggle (Tailwind to Plain CSS) */
+.env-toggle-wrapper {
+  width: 12rem;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75rem;
+  background-color: #ebe6ef;
+  border: 4px solid #121331;
+  transform: scale(0.35);
+  transform-origin: right center;
+  transition: background-color 0.3s ease;
+  margin-top: 5px;
+}
+
+.env-toggle-wrapper--dark {
+  background-color: #3a3347;
+}
+
+.env-toggle-inner {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.env-toggle-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  border: 4px solid #121331;
+}
+
+.env-toggle-label {
+  width: 100%;
+  height: 2.5rem;
+  border: 4px solid #121331;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.env-toggle-label--dark {
+  transform: scaleX(-1);
+}
+
+.env-toggle-input {
+  display: none;
+}
+
+.env-toggle-env {
+  width: 100%;
+  height: 100%;
+  background-color: #f24c00;
+  position: relative;
+}
+
+.env-toggle-top-flap {
+  width: 0;
+  height: 0;
+  z-index: 20;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-top: 20px solid #121331;
+  position: relative;
+}
+
+.env-toggle-top-flap-inner {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 15px solid #e44901;
+  top: -20px;
+  left: -18px;
+}
+
+.env-toggle-left-fold {
+  width: 24px;
+  height: 2.25rem;
+  z-index: 10;
+  position: absolute;
+  top: 9px;
+  left: 0;
+  background-color: #f24c00;
+  border-right: 2px solid #121331;
+  border-bottom: 4px solid #121331;
+  transform: skewY(39deg);
+}
+
+.env-toggle-right-fold {
+  width: 25px;
+  height: 2.25rem;
+  z-index: 10;
+  position: absolute;
+  top: 9px;
+  left: 24px;
+  background-color: #c44002;
+  border-right: 4px solid #121331;
+  border-left: 2px solid #121331;
+  border-bottom: 4px solid #121331;
+  transform: skewY(-39deg);
+}
+
+.env-toggle-line {
+  width: 1.5rem;
+  height: 0.25rem;
+  flex-shrink: 0;
+  background-color: #121331;
+  border-radius: 9999px;
+}
+
 .menu-toggle {
   display: inline-flex;
   width: 3.25rem;
@@ -307,6 +428,31 @@ svg {
 
 .neo-button--secondary {
   background: var(--neo-secondary);
+}
+
+:root.dark-theme .neo-button {
+  clip-path: polygon(0 8px, 8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+  background: transparent;
+  border: 2px solid var(--neo-accent);
+  color: var(--neo-accent);
+  box-shadow: none;
+}
+
+:root.dark-theme .neo-button:hover {
+  background: var(--neo-accent);
+  color: #0a0a0f;
+  box-shadow: var(--box-shadow-neon);
+}
+
+:root.dark-theme .neo-button--secondary {
+  border-color: var(--neo-secondary);
+  color: var(--neo-secondary);
+}
+
+:root.dark-theme .neo-button--secondary:hover {
+  background: var(--neo-secondary);
+  color: #0a0a0f;
+  box-shadow: var(--box-shadow-neon-secondary);
 }
 
 .hero-board,
@@ -499,6 +645,20 @@ svg {
 
 .brutal-card--yellow {
   background: var(--neo-secondary);
+}
+
+:root.dark-theme .brutal-card,
+:root.dark-theme .contact-panel,
+:root.dark-theme .hero-board,
+:root.dark-theme .stack-panel,
+:root.dark-theme .resume-preview,
+:root.dark-theme .loader-card {
+  clip-path: polygon(0 12px, 12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+  border: none;
+  background: #12121a;
+  box-shadow: 0 0 10px rgba(0,255,136,0.1) inset;
+  border-left: 2px solid var(--neo-accent);
+  border-right: 2px solid var(--neo-accent);
 }
 
 .card-icon {

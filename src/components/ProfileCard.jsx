@@ -10,7 +10,13 @@ export function ProfileCard() {
             <img
               src={resume.imageUrl}
               alt="Mohammed Mubashir"
-              className="profile-image"
+              className="profile-image profile-image--light"
+              loading="eager"
+            />
+            <img
+              src="/mubashir-cyber.jpeg"
+              alt="Mohammed Mubashir Cyber"
+              className="profile-image profile-image--dark"
               loading="eager"
             />
           </div>

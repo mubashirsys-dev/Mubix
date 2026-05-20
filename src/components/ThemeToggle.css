@@ -1,0 +1,242 @@
+.theme-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.premium-3d-toggle {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-3d-chassis {
+  position: relative;
+  width: 90px;
+  height: 46px;
+  border: 3px solid var(--neo-ink, #121331);
+  background: #ebe6ef;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-3d-toggle:hover .toggle-3d-chassis {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.15);
+}
+
+.premium-3d-toggle:active .toggle-3d-chassis {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Symbols */
+.symbol-circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 4px solid var(--neo-ink, #121331);
+  z-index: 1;
+}
+
+.symbol-line {
+  width: 14px;
+  height: 4px;
+  background: var(--neo-ink, #121331);
+  z-index: 1;
+}
+
+/* Slider Mechanism */
+.toggle-3d-slider {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  right: -3px; /* Start on the right for Light Mode */
+  width: 58px;
+  display: flex;
+  border: 3px solid var(--neo-ink, #121331);
+  border-radius: 8px;
+  /* Smoother, less bouncy transition */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 2;
+  transform-origin: center;
+}
+
+/* The actual solid colored block */
+.slider-main-body {
+  flex-grow: 1;
+  background: #f24c00; /* Industrial Orange */
+  position: relative;
+  z-index: 3;
+}
+
+/* The 3D Cube Cutout */
+.slider-cube-cutout {
+  width: 22px;
+  height: 100%;
+  position: relative;
+  z-index: 4;
+}
+
+/* Left border trick to create the 3D isometric corner */
+.cube-top-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 22px solid transparent;
+  border-top: 20px solid var(--neo-ink, #121331);
+  z-index: 5;
+}
+
+.cube-top-face::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -22px;
+  width: 0;
+  height: 0;
+  border-left: 17px solid transparent;
+  border-top: 15px solid #e44901; /* Lighter orange top face */
+}
+
+.cube-side-face {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 22px;
+  height: calc(100% - 20px);
+  background: #bc3800; /* Darker orange side face */
+  border-right: 3px solid var(--neo-ink, #121331);
+}
+
+/* ═══ CYBER MODE (ON STATE) ═══ */
+
+.theme-toggle-wrapper.is-cyber .toggle-3d-chassis {
+  background: #0a0a0f;
+  border-color: var(--neo-accent);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.2) inset, 0 0 10px rgba(0, 255, 136, 0.4);
+}
+
+.theme-toggle-wrapper.is-cyber .premium-3d-toggle:hover .toggle-3d-chassis {
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3) inset, 0 0 20px rgba(255, 0, 255, 0.6);
+  border-color: var(--neo-secondary);
+}
+
+.theme-toggle-wrapper.is-cyber .symbol-circle {
+  border-color: var(--neo-accent);
+  box-shadow: 0 0 5px var(--neo-accent);
+}
+
+.theme-toggle-wrapper.is-cyber .symbol-line {
+  background: var(--neo-accent);
+  box-shadow: 0 0 5px var(--neo-accent);
+}
+
+/* Move the slider to the left and flip it */
+.theme-toggle-wrapper.is-cyber .toggle-3d-slider {
+  transform: translateX(-32px) scaleX(-1);
+  border-color: var(--neo-accent);
+}
+
+.theme-toggle-wrapper.is-cyber .slider-main-body {
+  background: var(--neo-secondary); /* Magenta block */
+}
+
+.theme-toggle-wrapper.is-cyber .cube-top-face {
+  border-top-color: var(--neo-accent);
+}
+
+.theme-toggle-wrapper.is-cyber .cube-top-face::after {
+  border-top-color: #ff66ff; /* Lighter magenta */
+}
+
+.theme-toggle-wrapper.is-cyber .cube-side-face {
+  background: #cc00cc; /* Darker magenta */
+  border-right-color: var(--neo-accent);
+}
+
+/* Mobile Optimizations - Compact & Clean */
+@media (max-width: 859px) {
+  .theme-toggle-wrapper {
+    margin-top: 0;
+  }
+  
+  .toggle-3d-chassis {
+    width: 64px;
+    height: 32px;
+    padding: 0 6px;
+    border-width: 2px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  .premium-3d-toggle:hover .toggle-3d-chassis {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .premium-3d-toggle:active .toggle-3d-chassis {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .toggle-3d-slider {
+    width: 40px;
+    border-width: 2px;
+    top: -2px;
+    bottom: -2px;
+    right: -2px;
+    border-radius: 6px;
+  }
+  
+  .slider-cube-cutout {
+    width: 14px;
+  }
+  
+  .cube-top-face {
+    border-left-width: 14px;
+    border-top-width: 12px;
+  }
+  
+  .cube-top-face::after {
+    top: -12px;
+    left: -14px;
+    border-left-width: 10px;
+    border-top-width: 9px;
+  }
+  
+  .cube-side-face {
+    width: 14px;
+    height: calc(100% - 12px);
+    border-right-width: 2px;
+  }
+  
+  .theme-toggle-wrapper.is-cyber .toggle-3d-slider {
+    transform: translateX(-24px) scaleX(-1);
+  }
+  
+  .symbol-circle {
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+  }
+  
+  .symbol-line {
+    width: 10px;
+    height: 2px;
+  }
+}

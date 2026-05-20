@@ -3,12 +3,19 @@ import {
   ArrowRight,
   Award,
   Bot,
+  CheckCircle,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
   Code2,
+  Cpu,
+  CreditCard,
   Database,
   Download,
   ExternalLink,
+  Facebook,
+  Github,
   GraduationCap,
   Instagram,
   Languages,
@@ -19,6 +26,9 @@ import {
   MessageCircle,
   Phone,
   Star,
+  Sun,
+  Moon,
+  Twitter,
   X,
 } from "lucide-react";
 import { BrutalCard } from "./components/BrutalCard.jsx";
@@ -28,6 +38,8 @@ import { ProfileCard } from "./components/ProfileCard.jsx";
 import { ContactCard } from "./components/ContactCard.jsx";
 import { LoadingScreen } from "./components/LoadingScreen.jsx";
 import { Chatbot } from "./components/Chatbot.jsx";
+import { VisitorCounter } from "./components/VisitorCounter.jsx";
+import ThemeToggle from "./components/ThemeToggle.jsx";
 import { resume } from "./data/resume.js";
 
 const navItems = [
@@ -81,6 +93,11 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const touchStartX = useRef(0);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [featuresExpanded, setFeaturesExpanded] = useState(false);
 
   const closeMenu = () => setMenuOpen(false);
   const handleLoadingComplete = useCallback(() => setIsLoading(false), []);
@@ -104,11 +121,34 @@ function App() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
+  /* theme effect */
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark-theme");
+    } else {
+      document.documentElement.classList.remove("dark-theme");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    // Switch theme halfway through flash
+    setTimeout(() => {
+      setTheme((t) => (t === "light" ? "dark" : "light"));
+    }, 150);
+    // End transition
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 800);
+  };
+
   /* carousel controls */
   const allProjects = resume.projects;
   const totalSlides = allProjects.length;
-  const prevSlide = () => setSlideIndex((i) => (i - 1 + totalSlides) % totalSlides);
-  const nextSlide = () => setSlideIndex((i) => (i + 1) % totalSlides);
+  const prevSlide = () => { setFeaturesExpanded(false); setSlideIndex((i) => (i - 1 + totalSlides) % totalSlides); };
+  const nextSlide = () => { setFeaturesExpanded(false); setSlideIndex((i) => (i + 1) % totalSlides); };
   const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
   const handleTouchEnd = (e) => {
     const diff = touchStartX.current - e.changedTouches[0].clientX;
@@ -131,13 +171,6 @@ function App() {
             <span>{resume.shortName}</span>
           </a>
 
-          <button aria-expanded={menuOpen}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className="menu-toggle"
-            onClick={() => setMenuOpen((o) => !o)} type="button">
-            {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-          </button>
-
           <div className={`nav-links ${menuOpen ? "is-open" : ""}`}>
             {navItems.map((item) => (
               <a href={item.href} key={item.href} onClick={closeMenu}
@@ -145,6 +178,16 @@ function App() {
                 {item.label}
               </a>
             ))}
+          </div>
+
+          <div className="nav-controls">
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            <button aria-expanded={menuOpen}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              className="menu-toggle"
+              onClick={() => setMenuOpen((o) => !o)} type="button">
+              {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+            </button>
           </div>
         </nav>
       </header>
@@ -171,23 +214,34 @@ function App() {
               <NeoButton download href={resume.resumeUrl} icon={Download} variant="secondary">
                 Download Resume
               </NeoButton>
-              <NeoButton href={`https://wa.me/${resume.whatsappNumber}`}
-                icon={MessageCircle} variant="accent" target="_blank" rel="noopener noreferrer">
-                WhatsApp Me
+              <NeoButton href={resume.googleFormUrl}
+                icon={ExternalLink} variant="accent" target="_blank" rel="noopener noreferrer"
+                className="cta-highlight">
+                Start a Project
               </NeoButton>
             </div>
 
             {/* hero social row */}
             <div className="hero-socials">
+              <a href={resume.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hero-social-link">
+                <Github size={18} />
+              </a>
               <a href={resume.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hero-social-link">
                 <Linkedin size={18} />
               </a>
               <a href={`https://instagram.com/${resume.instagram}`} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hero-social-link">
                 <Instagram size={18} />
               </a>
-              <a href={`mailto:${resume.email}`} aria-label="Email" className="hero-social-link">
-                <Mail size={18} />
+              <a href={resume.x} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="hero-social-link">
+                <Twitter size={18} />
               </a>
+              <a href={resume.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hero-social-link">
+                <Facebook size={18} />
+              </a>
+            </div>
+            
+            <div className="hero-visitor-counter">
+              <VisitorCounter />
             </div>
           </div>
 
@@ -263,13 +317,40 @@ function App() {
                   </p>
                 </div>
                 <h3 className="carousel-card-title">{currentProject.title}</h3>
+
+                {currentProject.stats && (
+                  <div className="project-stats">
+                    {currentProject.stats.map((stat) => (
+                      <div className="stat-card" key={stat}>
+                        <Cpu size={14} className="stat-icon" aria-hidden="true" />
+                        <span>{stat}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 <p className="carousel-card-desc">{currentProject.description}</p>
 
-                <ul className="feature-list">
-                  {currentProject.features.map((f) => (
-                    <li key={f}><ArrowRight aria-hidden="true" />{f}</li>
-                  ))}
-                </ul>
+                <div className="project-features-container">
+                  <ul className={`feature-list ${featuresExpanded ? "expanded" : ""}`}>
+                    {(featuresExpanded ? currentProject.features : currentProject.features.slice(0, 4)).map((f) => (
+                      <li key={f}><CheckCircle size={14} aria-hidden="true" className="feature-icon" />{f}</li>
+                    ))}
+                  </ul>
+                  {currentProject.features.length > 4 && (
+                    <button 
+                      className="feature-toggle-btn"
+                      onClick={() => setFeaturesExpanded(!featuresExpanded)}
+                      type="button"
+                    >
+                      {featuresExpanded ? (
+                        <><ChevronUp size={16} /> Hide Features</>
+                      ) : (
+                        <><ChevronDown size={16} /> View {currentProject.features.length - 4} More Features</>
+                      )}
+                    </button>
+                  )}
+                </div>
 
                 <div className="project-stack">
                   {currentProject.stack.map((s) => (
@@ -282,6 +363,12 @@ function App() {
                     <NeoButton href={currentProject.liveUrl} icon={ExternalLink}
                       target="_blank" rel="noopener noreferrer">
                       Live Website
+                    </NeoButton>
+                  )}
+                  {currentProject.githubUrl && currentProject.githubUrl !== "#" && (
+                    <NeoButton href={currentProject.githubUrl} icon={Github} variant="secondary"
+                      target="_blank" rel="noopener noreferrer">
+                      GitHub
                     </NeoButton>
                   )}
                 </div>
@@ -338,24 +425,26 @@ function App() {
           <div className="contact-panel">
             <div className="contact-left">
               <p className="eyebrow sticker sticker--red">Let's Connect</p>
-              <h2>Let's build something useful together.</h2>
+              <h2>Let's Build Something Useful Together.</h2>
               <p className="contact-subtext">
-                I'm always open to discussing new projects, creative ideas,
-                or opportunities to be part of your vision.
+                Have a project, collaboration idea, freelance work, or just want to connect? Send me a message through the contact form.
               </p>
             </div>
             <div className="contact-grid">
-              <ContactCard icon={Mail} label="Email" value={resume.email}
-                href={`mailto:${resume.email}`} />
-              <ContactCard icon={Phone} label="Phone" value={resume.phone}
-                href={`tel:+91${resume.phone}`} />
-              <ContactCard icon={MapPin} label="Location" value={resume.location} />
-              <ContactCard icon={MessageCircle} label="WhatsApp" value="Direct Chat"
-                href={`https://wa.me/${resume.whatsappNumber}`} external />
+              <ContactCard icon={ExternalLink} label="Google Form Contact" value="Contact Me"
+                href={resume.googleFormUrl} external />
               <ContactCard icon={Instagram} label="Instagram" value={`@${resume.instagram}`}
                 href={`https://instagram.com/${resume.instagram}`} external />
+              <ContactCard icon={Github} label="GitHub" value="mubashirsys-dev"
+                href={resume.github} external />
+              <ContactCard icon={Twitter} label="X (Twitter)" value="@mubix.o_0"
+                href={resume.x} external />
+              <ContactCard icon={Facebook} label="Facebook" value="Mubashir"
+                href={resume.facebook} external />
               <ContactCard icon={Linkedin} label="LinkedIn" value="Mohammed Mubashir"
                 href={resume.linkedin} external />
+              <ContactCard icon={MapPin} label="Location" value={resume.location} />
+              <ContactCard icon={Star} label="Availability Status" value="Open for Work" />
             </div>
           </div>
         </RevealSection>
@@ -370,6 +459,9 @@ function App() {
           </div>
           <p>Designed & Built by Mohammed Mubashir</p>
           <div className="footer-links">
+            <a href={resume.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <Github size={20} />
+            </a>
             <a href={resume.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Linkedin size={20} />
             </a>
@@ -377,7 +469,12 @@ function App() {
               rel="noopener noreferrer" aria-label="Instagram">
               <Instagram size={20} />
             </a>
-            <a href={`mailto:${resume.email}`} aria-label="Email"><Mail size={20} /></a>
+            <a href={resume.x} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+              <Twitter size={20} />
+            </a>
+            <a href={resume.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <Facebook size={20} />
+            </a>
           </div>
         </div>
       </footer>
@@ -385,11 +482,14 @@ function App() {
       {/* ═══ FLOATING BUTTONS ═══ */}
       <div className="floating-stack">
         <Chatbot />
-        <a className="whatsapp-fab" href={`https://wa.me/${resume.whatsappNumber}`}
-          target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-          <MessageCircle size={24} />
+        <a className="google-form-fab" href={resume.googleFormUrl}
+          target="_blank" rel="noopener noreferrer" aria-label="Send Message">
+          <ExternalLink size={24} />
         </a>
       </div>
+
+      {/* Cyber Flash Overlay */}
+      {isTransitioning && <div className="cyber-transition-overlay"></div>}
     </div>
   );
 }
