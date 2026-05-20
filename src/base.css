@@ -121,31 +121,192 @@
 }
 
 /* Cyber Transitions */
-.cyber-transition-overlay {
+.cyber-glitch-overlay {
     position: fixed;
     inset: 0;
     z-index: 10000;
     pointer-events: none;
     overflow: hidden;
+    background: #000;
+    animation: cinematicGlitchContainer 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.cyber-transition-overlay::before {
+.cyber-glitch-overlay::before,
+.cyber-glitch-overlay::after {
     content: "";
     position: absolute;
-    inset: -50%;
-    background: #fff;
-    animation: cyberFlash 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    inset: 0;
+    background: #000;
 }
 
-@keyframes cyberFlash {
-    0% { opacity: 0; background: #fff; transform: scale(1); }
-    5% { opacity: 1; filter: invert(1) hue-rotate(90deg); transform: scale(1.05) skewX(25deg); }
-    10% { opacity: 0.9; transform: scale(0.9) skewX(-25deg); background: rgba(176, 38, 255, 0.9); }
-    15% { opacity: 1; transform: scale(1.15) skewX(30deg); background: rgba(0, 229, 255, 0.9); filter: invert(0) contrast(200%); }
-    20% { transform: scale(1) skewX(0); background: #fff; opacity: 0.5; }
-    25% { opacity: 0.95; background: #07070a; filter: contrast(150%) hue-rotate(180deg); }
-    35% { opacity: 0; background: #07070a; filter: none; }
-    100% { opacity: 0; background: #07070a; }
+.cyber-glitch-overlay::before {
+    mix-blend-mode: screen;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 229, 255, 0.3) 2px, rgba(0, 229, 255, 0.3) 4px);
+    animation: glitchRGB-cyan 1.2s infinite alternate-reverse;
+}
+
+.cyber-glitch-overlay::after {
+    mix-blend-mode: screen;
+    background: repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255, 0, 255, 0.2) 3px, rgba(255, 0, 255, 0.2) 6px);
+    animation: glitchRGB-magenta 1.4s infinite alternate;
+}
+
+.glitch-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: var(--font-heading, "Orbitron", monospace);
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 900;
+    text-shadow: 2px 2px 0 #00e5ff, -2px -2px 0 #ff00ff;
+    z-index: 10;
+    animation: glitchText 1.5s forwards;
+    opacity: 0;
+}
+
+.glitch-scanlines {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0, 229, 255, 0.2) 50%, rgba(0, 229, 255, 0.2));
+    background-size: 100% 8px;
+    z-index: 5;
+    animation: scanlineSweep 1.5s forwards;
+    opacity: 0;
+}
+
+.comic-wipe-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.comic-paper-bg {
+    position: absolute;
+    inset: 0;
+    background-color: var(--neo-bg, #fffdf5);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.14) 2px, transparent 2.5px);
+    background-size: 30px 30px;
+    z-index: 1;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    animation: paperSlideUp 1.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.comic-wipe-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.comic-bounce-text {
+    font-family: var(--font-body, "Space Grotesk", monospace);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    color: var(--neo-white, #fff);
+    -webkit-text-stroke: 4px var(--neo-ink, #000);
+    text-shadow: 8px 8px 0 var(--neo-ink, #000);
+    text-transform: uppercase;
+    transform: scale(0);
+    opacity: 0;
+    animation: comicBounce 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.comic-stamp {
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    font-family: var(--font-body, "Space Grotesk", monospace);
+    font-weight: 900;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--neo-accent, #ff6b6b);
+    border: 4px solid var(--neo-accent, #ff6b6b);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transform: rotate(15deg) scale(3);
+    opacity: 0;
+    animation: stampSmash 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes paperSlideUp {
+    0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
+    20% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    80% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+}
+
+@keyframes comicBounce {
+    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    25% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    35% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+    45% { transform: scale(0.95) rotate(-3deg); }
+    55% { transform: scale(1) rotate(0deg); opacity: 1; }
+    80% { transform: scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: scale(1.5) rotate(10deg); opacity: 0; }
+}
+
+@keyframes stampSmash {
+    0% { transform: rotate(25deg) scale(3); opacity: 0; }
+    45% { transform: rotate(25deg) scale(3); opacity: 0; }
+    55% { transform: rotate(-5deg) scale(1); opacity: 1; box-shadow: 0 0 0 4px var(--neo-accent, #ff6b6b); }
+    80% { transform: rotate(-5deg) scale(1); opacity: 1; }
+    100% { transform: translateY(-50px) rotate(-10deg) scale(0.8); opacity: 0; }
+}
+
+@keyframes cinematicGlitchContainer {
+    0% { opacity: 0; }
+    5% { opacity: 1; clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%); transform: scale(1.05); }
+    10% { clip-path: polygon(0 20%, 100% 20%, 100% 80%, 0 80%); transform: scale(0.95); filter: invert(1); }
+    15% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: scale(1.1) skewX(10deg); filter: none; }
+    20% { clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); transform: scale(1) skewX(-10deg); }
+    30% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); transform: scale(1.02); }
+    50% { opacity: 1; filter: contrast(150%) brightness(1.2); }
+    80% { opacity: 1; }
+    100% { opacity: 0; filter: none; }
+}
+
+@keyframes glitchRGB-cyan {
+    0% { transform: translate(0, 0); opacity: 0; }
+    10% { transform: translate(-10px, 5px); opacity: 1; }
+    30% { transform: translate(5px, -10px); opacity: 0.8; }
+    50% { transform: translate(-5px, 0); opacity: 0.5; }
+    70% { transform: translate(15px, 10px); opacity: 0.9; }
+    100% { transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes glitchRGB-magenta {
+    0% { transform: translate(0, 0); opacity: 0; }
+    15% { transform: translate(10px, -5px); opacity: 1; }
+    35% { transform: translate(-15px, 10px); opacity: 0.7; }
+    60% { transform: translate(5px, 5px); opacity: 0.4; }
+    80% { transform: translate(-10px, -15px); opacity: 0.8; }
+    100% { transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes glitchText {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+    15% { opacity: 1; transform: translate(-50%, -50%) scale(1) skewX(20deg); }
+    20% { opacity: 0.2; transform: translate(-52%, -48%) scale(1.05) skewX(-20deg); }
+    30% { opacity: 1; transform: translate(-50%, -50%) scale(1); text-shadow: 5px 0 #00e5ff, -5px 0 #ff00ff; }
+    50% { opacity: 1; text-shadow: 2px 2px 0 #00e5ff, -2px -2px 0 #ff00ff; }
+    75% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+    100% { opacity: 0; }
+}
+
+@keyframes scanlineSweep {
+    0% { opacity: 0; transform: translateY(-100%); }
+    20% { opacity: 0.5; }
+    80% { opacity: 0.3; transform: translateY(100%); }
+    100% { opacity: 0; }
 }
 
 :root.dark-theme .cyber-glitch-text {

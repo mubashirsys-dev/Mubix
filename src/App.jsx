@@ -97,7 +97,9 @@ function App() {
     return localStorage.getItem("theme") || "light";
   });
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [transitionType, setTransitionType] = useState(null); // 'glitch' or 'fade'
   const [featuresExpanded, setFeaturesExpanded] = useState(false);
+  const [footerOffset, setFooterOffset] = useState(0);
 
   const closeMenu = () => setMenuOpen(false);
   const handleLoadingComplete = useCallback(() => setIsLoading(false), []);
@@ -114,10 +116,23 @@ function App() {
     return () => obs.disconnect();
   }, [isLoading]);
 
-  /* scroll shadow */
+  /* scroll shadow & footer offset */
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20);
+    const fn = () => {
+      setScrolled(window.scrollY > 20);
+      
+      const footer = document.querySelector('.site-footer');
+      if (footer) {
+        const rect = footer.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          setFooterOffset(window.innerHeight - rect.top);
+        } else {
+          setFooterOffset(0);
+        }
+      }
+    };
     window.addEventListener("scroll", fn, { passive: true });
+    fn(); // init
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
@@ -134,14 +149,31 @@ function App() {
   const toggleTheme = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    // Switch theme halfway through flash
-    setTimeout(() => {
-      setTheme((t) => (t === "light" ? "dark" : "light"));
-    }, 150);
-    // End transition
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 800);
+    
+    const isGoingCyber = theme === "light";
+    setTransitionType(isGoingCyber ? 'glitch' : 'comic-wipe');
+
+    if (isGoingCyber) {
+      // Glitch transition (Light -> Cyber)
+      setTimeout(() => {
+        setTheme("dark");
+      }, 700); // Switch theme halfway through glitch peak
+
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setTransitionType(null);
+      }, 1500); // Glitch finishes around 1.5s
+    } else {
+      // Comic Wipe transition (Cyber -> Light)
+      setTimeout(() => {
+        setTheme("light");
+      }, 700); // Switch right when paper covers the screen
+      
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setTransitionType(null);
+      }, 1600); // Transition completes
+    }
   };
 
   /* carousel controls */
@@ -480,7 +512,7 @@ function App() {
       </footer>
 
       {/* ═══ FLOATING BUTTONS ═══ */}
-      <div className="floating-stack">
+      <div className="floating-stack" style={{ transform: `translateY(-${footerOffset}px)` }}>
         <Chatbot />
         <a className="google-form-fab" href={resume.googleFormUrl}
           target="_blank" rel="noopener noreferrer" aria-label="Send Message">
@@ -488,8 +520,23 @@ function App() {
         </a>
       </div>
 
-      {/* Cyber Flash Overlay */}
-      {isTransitioning && <div className="cyber-transition-overlay"></div>}
+      {/* Transition Overlays */}
+      {isTransitioning && transitionType === 'glitch' && (
+        <div className="cyber-glitch-overlay">
+          <div className="glitch-text">SYSTEM OVERRIDE</div>
+          <div className="glitch-scanlines"></div>
+        </div>
+      )}
+      
+      {isTransitioning && transitionType === 'comic-wipe' && (
+        <div className="comic-wipe-overlay">
+          <div className="comic-paper-bg"></div>
+          <div className="comic-wipe-content">
+            <div className="comic-stamp">MUBIX UI LOADED</div>
+            <div className="comic-bounce-text">BACK TO REALITY</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

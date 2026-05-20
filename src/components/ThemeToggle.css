@@ -1,8 +1,25 @@
 .theme-toggle-wrapper {
   display: flex;
   align-items: center;
+  gap: 12px;
   margin-top: 2px;
   flex-shrink: 0;
+}
+
+.theme-toggle-label {
+  font-family: var(--font-body, "Space Grotesk", monospace);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  color: var(--neo-ink, #000);
+}
+
+.theme-toggle-wrapper.is-cyber .theme-toggle-label {
+  color: var(--neo-accent, #00e5ff);
+  font-family: var(--font-heading, "Orbitron", monospace);
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  letter-spacing: 0.1em;
 }
 
 .premium-3d-toggle {
@@ -173,6 +190,10 @@
 @media (max-width: 859px) {
   .theme-toggle-wrapper {
     margin-top: 0;
+  }
+  
+  .theme-toggle-label {
+    display: none;
   }
   
   .toggle-3d-chassis {
