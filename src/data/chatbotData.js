@@ -22,7 +22,7 @@ const responses = [
   {
     keywords: ["contact", "reach", "email", "phone", "whatsapp", "hire", "message"],
     answer:
-      "You can reach Mubashir via:\n\n📧 Email: mubashir.sgs@gmail.com\n📱 Phone: 9823786144\n💬 WhatsApp: Direct chat available in the contact section\n📍 Location: Aurangabad, Maharashtra, India",
+      "You can reach Mubashir via:\n\n📧 Email: mubashir.sys@gmail.com\n📱 Phone: 9823786144\n💬 WhatsApp: Direct chat available in the contact section\n📍 Location: Aurangabad, Maharashtra, India",
   },
   {
     keywords: ["resume", "cv", "download", "pdf"],

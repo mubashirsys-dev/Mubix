@@ -4,7 +4,7 @@ export const resume = {
   role: "Aspiring Software Developer",
   location: "Aurangabad, Maharashtra, India",
   phone: "9823786144",
-  email: "mubashir.sgs@gmail.com",
+  email: "mubashir.sys@gmail.com",
   whatsappNumber: "919823786144",
   instagram: "mubix.o_0",
   github: "https://github.com/mubix",
