@@ -199,7 +199,7 @@ function App() {
       <header className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
         <nav className="nav-shell" aria-label="Primary navigation">
           <a className="logo-mark" href="#top" onClick={closeMenu} aria-label="Go to top">
-            <img src={resume.logoUrl} alt="MUBIX" className="nav-logo-img" />
+            <img src={resume.logoUrl} alt="MUBIX" className="nav-logo-img" width="32" height="32" fetchPriority="high" />
             <span>{resume.shortName}</span>
           </a>
 
@@ -338,7 +338,7 @@ function App() {
               <ChevronLeft size={28} />
             </button>
 
-            <div className="carousel-viewport">
+            <div className="carousel-viewport" aria-live="polite">
               <BrutalCard className="carousel-card" tone="white" key={slideIndex}>
                 {currentProject.featured && (
                   <div className="project-stamp"><Bot aria-hidden="true" />Featured</div>
@@ -486,7 +486,7 @@ function App() {
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">
-            <img src={resume.logoUrl} alt="MUBIX" className="footer-logo-img" />
+            <img src={resume.logoUrl} alt="MUBIX" className="footer-logo-img" width="40" height="40" loading="lazy" />
             <span className="footer-logo">MUBIX</span>
           </div>
           <p>Designed & Built by Mohammed Mubashir</p>

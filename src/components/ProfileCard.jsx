@@ -12,12 +12,18 @@ export function ProfileCard() {
               alt="Mohammed Mubashir"
               className="profile-image profile-image--light"
               loading="eager"
+              fetchPriority="high"
+              width="280"
+              height="280"
             />
             <img
               src="/MUBASHIR-CYBER.jpeg"
               alt="Mohammed Mubashir Cyber"
               className="profile-image profile-image--dark"
               loading="eager"
+              fetchPriority="high"
+              width="280"
+              height="280"
             />
           </div>
         </div>
