@@ -1,0 +1,646 @@
+/* ── Hero ── */
+.hero {
+    display: grid;
+    gap: var(--space-4);
+    overflow: hidden;
+    position: relative
+}
+
+.hero::after {
+    content: "DEV";
+    position: absolute;
+    right: -.5rem;
+    top: 1rem;
+    z-index: -1;
+    color: transparent;
+    font-size: 7rem;
+    font-weight: 700;
+    line-height: 1;
+    -webkit-text-stroke: 4px rgba(0, 0, 0, .18)
+}
+
+.animate-hero-left {
+    animation: slideInLeft .8s ease .1s both
+}
+
+.animate-hero-right {
+    animation: slideInRight .8s ease .3s both
+}
+
+.availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    border: var(--border-thick);
+    background: var(--neo-white);
+    box-shadow: var(--shadow-small);
+    padding: .5rem .85rem;
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-2)
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--neo-green);
+    animation: pulse 2s ease infinite;
+    flex-shrink: 0
+}
+
+/* Hero Typography — properly aligned and responsive */
+.hero h1 {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    font-weight: 900;
+    line-height: .88;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -.02em;
+    font-size: clamp(2.8rem, 8vw, 6rem)
+}
+
+.hero-name-outline {
+    color: transparent;
+    -webkit-text-stroke: 3px var(--neo-ink);
+    display: block;
+    animation: heroTypographyFadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both
+}
+
+.hero-name-solid {
+    color: var(--neo-ink);
+    display: block;
+    animation: heroTypographyFadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.35s
+}
+
+@keyframes heroTypographyFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.hero-role {
+    display: inline-block;
+    margin: var(--space-2) 0 0;
+    border: var(--border-thick);
+    background: var(--neo-muted);
+    box-shadow: var(--shadow-small);
+    font-size: 1.15rem;
+    padding: .45rem .7rem;
+    transform: rotate(1deg)
+}
+
+.hero-text {
+    max-width: 42rem;
+    margin: var(--space-3) 0 0;
+    border-left: var(--border-heavy);
+    background: var(--neo-white);
+    box-shadow: var(--shadow-small);
+    font-size: 1.05rem;
+    padding: var(--space-2)
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-3)
+}
+
+/* Hero Social Row */
+.hero-socials {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-3)
+}
+
+.hero-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: var(--border-thick);
+    background: var(--neo-white);
+    box-shadow: var(--shadow-small);
+    transition: transform .15s, box-shadow .15s, background .15s
+}
+
+.hero-social-link:hover {
+    background: var(--neo-secondary);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--neo-ink)
+}
+
+/* ── Profile Card ── */
+.profile-card {
+    animation: float 4s ease-in-out infinite
+}
+
+.profile-card-inner {
+    border: var(--border-heavy);
+    background: var(--neo-white);
+    box-shadow: var(--shadow-large);
+    padding: var(--space-3);
+    transform: rotate(1deg);
+    transition: transform .3s ease
+}
+
+.profile-card-inner:hover {
+    transform: rotate(0deg) scale(1.02)
+}
+
+.profile-image-wrapper {
+    margin-bottom: var(--space-3)
+}
+
+.profile-image-container {
+    border: var(--border-heavy);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+    aspect-ratio: 1;
+    max-width: 280px;
+    margin: 0 auto;
+    background: var(--neo-bg)
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    transition: transform .4s ease
+}
+
+.profile-image-container:hover .profile-image {
+    transform: scale(1.05)
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    margin-bottom: var(--space-3)
+}
+
+.profile-badge {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border: var(--border-thick);
+    padding: .4rem .65rem;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em
+}
+
+.profile-badge--edu {
+    background: var(--neo-muted)
+}
+
+.profile-badge--loc {
+    background: var(--neo-secondary)
+}
+
+.profile-badge--avail {
+    background: var(--neo-green)
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-1)
+}
+
+.profile-stat {
+    border: var(--border-thick);
+    padding: var(--space-1);
+    text-align: center;
+    text-transform: uppercase
+}
+
+.profile-stat:nth-child(1) {
+    background: var(--neo-secondary)
+}
+
+.profile-stat:nth-child(2) {
+    background: var(--neo-muted)
+}
+
+.profile-stat:nth-child(3) {
+    background: var(--neo-accent)
+}
+
+.profile-stat strong {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 900;
+    line-height: 1
+}
+
+.profile-stat span {
+    display: block;
+    font-size: .6rem;
+    letter-spacing: .1em;
+    margin-top: .2rem
+}
+
+/* ── Marquee ── */
+.marquee-strip {
+    overflow: hidden;
+    border-block: var(--border-heavy);
+    background: var(--neo-ink);
+    color: var(--neo-white)
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite
+}
+
+.marquee-track span {
+    display: inline-flex;
+    min-height: 4.25rem;
+    align-items: center;
+    gap: .75rem;
+    border-right: var(--border-thick);
+    font-size: 1rem;
+    letter-spacing: .15em;
+    padding: 0 1.5rem;
+    text-transform: uppercase
+}
+
+.marquee-track svg {
+    fill: var(--neo-white)
+}
+
+/* ── Skills ── */
+.skills-grid {
+    display: grid;
+    gap: var(--space-3)
+}
+
+.card-icon {
+    display: inline-flex;
+    width: 4rem;
+    height: 4rem;
+    align-items: center;
+    justify-content: center;
+    border: var(--border-thick);
+    background: var(--neo-accent);
+    box-shadow: var(--shadow-small);
+    margin-bottom: var(--space-2)
+}
+
+.card-icon svg {
+    width: 2rem;
+    height: 2rem
+}
+
+.skill-card h3,
+.timeline-card h3 {
+    margin: 0 0 var(--space-2);
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase
+}
+
+.chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem
+}
+
+.chip-list li {
+    display: inline-flex;
+    align-items: center;
+    border: var(--border-thick);
+    background: var(--neo-white);
+    box-shadow: var(--shadow-small);
+    font-size: .85rem;
+    letter-spacing: .08em;
+    min-height: 2.4rem;
+    padding: .4rem .7rem;
+    text-transform: uppercase;
+    transition: transform .15s, background .15s
+}
+
+.chip-list li:hover {
+    background: var(--neo-secondary);
+    transform: translateY(-2px)
+}
+
+.skill-bars-section {
+    margin-top: var(--space-4);
+    border: var(--border-thick);
+    background: var(--neo-white);
+    box-shadow: var(--shadow-medium);
+    padding: var(--space-3)
+}
+
+.skill-bars-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3)
+}
+
+.skill-bars-grid {
+    display: grid;
+    gap: var(--space-2)
+}
+
+.skill-bar-item {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem
+}
+
+.skill-bar-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .08em
+}
+
+.skill-bar-track {
+    height: 12px;
+    border: var(--border-thick);
+    background: var(--neo-bg)
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background: var(--fill-color, var(--neo-accent));
+    width: var(--fill-width);
+    animation: skillFill 1.2s ease-out both
+}
+
+.revealed .skill-bar-fill {
+    animation: skillFill 1.2s ease-out both
+}
+
+/* ══ PROJECT CAROUSEL ══ */
+.carousel {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-2);
+    position: relative
+}
+
+.carousel-viewport {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden
+}
+
+.carousel-card {
+    animation: carouselIn .4s ease both;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--neo-white)
+}
+
+.carousel-card:hover {
+    transform: translate(-2px, -4px)
+}
+
+.carousel-card-top {
+    margin-bottom: var(--space-2)
+}
+
+.carousel-card-title {
+    margin: 0 0 var(--space-2);
+    font-size: 1.7rem;
+    font-weight: 900;
+    line-height: 1.05;
+    text-transform: uppercase
+}
+
+.carousel-card-desc {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 0 0 var(--space-3);
+    max-width: 48rem
+}
+
+.carousel-btn {
+    width: 52px;
+    flex-shrink: 0;
+    border: var(--border-thick);
+    background: var(--neo-white);
+    box-shadow: var(--shadow-small);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .1s, box-shadow .1s, background .1s;
+    color: var(--neo-ink)
+}
+
+.carousel-btn:hover {
+    background: var(--neo-secondary);
+    transform: translate(-1px, -1px);
+    box-shadow: 6px 6px 0 0 var(--neo-ink)
+}
+
+.carousel-btn:active {
+    box-shadow: none;
+    transform: translate(4px, 4px)
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: .6rem;
+    margin-top: var(--space-3)
+}
+
+.carousel-dot {
+    width: 14px;
+    height: 14px;
+    border: var(--border-thick);
+    background: var(--neo-white);
+    cursor: pointer;
+    transition: background .15s, transform .15s
+}
+
+.carousel-dot--active {
+    background: var(--neo-accent);
+    transform: scale(1.2)
+}
+
+.carousel-dot:hover {
+    background: var(--neo-secondary)
+}
+
+.project-stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    border: var(--border-thick);
+    background: var(--neo-accent);
+    box-shadow: var(--shadow-small);
+    margin-bottom: var(--space-3);
+    padding: .55rem .8rem;
+    text-transform: uppercase;
+    transform: rotate(-2deg)
+}
+
+.project-number {
+    display: inline-flex;
+    border: var(--border-thick);
+    background: var(--neo-muted);
+    box-shadow: var(--shadow-small);
+    margin: 0 0 var(--space-2);
+    padding: .35rem .6rem;
+    font-size: .9rem;
+    letter-spacing: .12em;
+    width: fit-content
+}
+
+.feature-list {
+    display: grid;
+    gap: var(--space-2);
+    position: relative;
+    z-index: 1
+}
+
+.feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    border: var(--border-thick);
+    background: var(--neo-bg);
+    padding: .85rem
+}
+
+.feature-list svg {
+    margin-top: .15rem;
+    flex-shrink: 0
+}
+
+.project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-top: var(--space-3);
+    position: relative;
+    z-index: 1
+}
+
+.stack-badge {
+    display: inline-flex;
+    align-items: center;
+    border: var(--border-thick);
+    background: var(--neo-secondary);
+    box-shadow: var(--shadow-small);
+    font-size: .8rem;
+    letter-spacing: .08em;
+    padding: .35rem .6rem;
+    text-transform: uppercase
+}
+
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    position: relative;
+    z-index: 1
+}
+
+/* ── Education ── */
+.timeline {
+    display: grid;
+    gap: var(--space-3)
+}
+
+.timeline-card {
+    background: var(--neo-white)
+}
+
+.timeline-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2)
+}
+
+.timeline-top span {
+    border: var(--border-thick);
+    background: var(--neo-secondary);
+    box-shadow: var(--shadow-small);
+    font-size: .8rem;
+    letter-spacing: .1em;
+    padding: .35rem .6rem;
+    text-transform: uppercase
+}
+
+.timeline-card p {
+    margin: 0 0 .75rem;
+    font-size: 1.05rem
+}
+
+.timeline-card strong {
+    display: inline-block;
+    border-bottom: var(--border-thick);
+    font-size: 1rem
+}
+
+/* ── Certifications ── */
+.badge-wall {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2)
+}
+
+.cert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    border: var(--border-thick);
+    box-shadow: var(--shadow-white);
+    color: var(--neo-ink);
+    font-size: .95rem;
+    letter-spacing: .08em;
+    min-height: 3.4rem;
+    padding: .65rem .85rem;
+    text-transform: uppercase;
+    transition: transform .18s ease-out
+}
+
+.cert-badge:hover {
+    transform: rotate(3deg) translateY(-4px)
+}
+
+.cert-badge--0 {
+    background: var(--neo-secondary);
+    transform: rotate(-1deg)
+}
+
+.cert-badge--1 {
+    background: var(--neo-accent);
+    transform: rotate(1deg)
+}
+
+.cert-badge--2 {
+    background: var(--neo-muted);
+    transform: rotate(-2deg)
+}
