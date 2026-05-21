@@ -490,6 +490,9 @@ function App() {
             <span className="footer-logo">MUBIX</span>
           </div>
           <p>Designed & Built by Mohammed Mubashir</p>
+          <p className="seo-footer-text" style={{ fontSize: "0.8rem", opacity: 0.6, maxWidth: "600px", margin: "1rem auto 0", lineHeight: "1.5" }}>
+            Mohammed Mubashir is an Indian Full Stack Developer, UI/UX Designer, and Computer Science student from Aurangabad, Maharashtra, India. Founder of MUBIX.
+          </p>
           <div className="footer-links">
             <a href={resume.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github size={20} />
