@@ -1,0 +1,749 @@
+/* ═══════════════════════════════════════════
+   MUBIX OS — SEO Landing Page Stylesheet
+   Modern neo-brutalist grid system, subtle neon highlights,
+   fluid responsive padding, and dynamic transitions.
+   ═══════════════════════════════════════════ */
+
+.mubixos-landing-page {
+  background-color: var(--neo-bg);
+  color: var(--neo-text);
+  font-family: 'Space Grotesk', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ── 1. Header Navigation ── */
+.mubixos-landing-header {
+  background-color: var(--neo-bg);
+  border-bottom: 4px solid var(--neo-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 1.5rem;
+  transition: background-color 0.4s ease;
+}
+
+.landing-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.landing-back-btn {
+  background-color: var(--neo-secondary);
+  border: 3px solid var(--neo-border);
+  box-shadow: var(--neo-shadow-sm);
+  color: var(--neo-text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.landing-back-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--neo-shadow);
+}
+
+.landing-back-btn:active {
+  transform: translate(0, 0);
+  box-shadow: var(--neo-shadow-sm);
+}
+
+.landing-brand-logo {
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.brand-dot {
+  animation: pulse-badge 2s infinite ease-in-out;
+}
+
+@keyframes pulse-badge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ── 2. Hero Section ── */
+.landing-hero {
+  position: relative;
+  border-bottom: 4px solid var(--neo-border);
+  padding: 6rem 2rem 5rem;
+  overflow: hidden;
+}
+
+.landing-grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(var(--neo-accent-dim, rgba(244, 196, 48, 0.15)) 1.5px, transparent 1.5px),
+    radial-gradient(var(--neo-accent-dim, rgba(244, 196, 48, 0.15)) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.landing-hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.product-badge {
+  background-color: var(--neo-accent);
+  border: 3px solid var(--neo-border);
+  box-shadow: var(--neo-shadow-sm);
+  color: #000;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.sparkle-anim {
+  animation: rotate-sparkle 3s infinite linear;
+}
+
+@keyframes rotate-sparkle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.landing-title {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.landing-subtitle {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--neo-text);
+  opacity: 0.95;
+  margin: 0 0 1.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.landing-tagline {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  opacity: 0.85;
+}
+
+/* Specs Row */
+.landing-specs-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  max-width: 840px;
+  margin: 0 auto 3.5rem;
+}
+
+.landing-spec-card {
+  background-color: var(--neo-card-bg);
+  border: 4px solid var(--neo-border);
+  box-shadow: var(--neo-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.landing-spec-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--neo-shadow);
+}
+
+.spec-number {
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: var(--neo-accent);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.spec-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.landing-hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* ── 3. Section Headers ── */
+.landing-section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.section-pre {
+  font-family: 'Space Mono', monospace;
+  color: var(--neo-accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.section-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* ── 4. Architecture Section ── */
+.landing-architecture {
+  padding: 5rem 2rem;
+  border-bottom: 4px solid var(--neo-border);
+  background-color: var(--neo-cream-bg, #fffdf5);
+  transition: background-color 0.4s ease;
+}
+
+.architecture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.arch-card {
+  background-color: var(--neo-card-bg);
+  border: 4px solid var(--neo-border);
+  box-shadow: var(--neo-shadow);
+  padding: 2.25rem 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.arch-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--neo-shadow-lg, 12px 12px 0px #000);
+}
+
+.arch-icon-box {
+  border: 3px solid var(--neo-border);
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background-color: var(--neo-accent);
+  color: #000;
+}
+
+.arch-icon--terminal { background-color: #d1c4e9; }
+.arch-icon--fs { background-color: #ffe082; }
+.arch-icon--wm { background-color: #80deea; }
+.arch-icon--runtime { background-color: #a5d6a7; }
+
+.arch-card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.arch-card p {
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* ── 5. Features Section ── */
+.landing-features {
+  padding: 5rem 2rem;
+  border-bottom: 4px solid var(--neo-border);
+}
+
+.features-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app-spec-card {
+  background-color: var(--neo-card-bg);
+  border: 4px solid var(--neo-border);
+  box-shadow: var(--neo-shadow-sm);
+  padding: 1.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-spec-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neo-shadow);
+}
+
+.app-spec-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.app-spec-icon {
+  color: var(--neo-accent);
+  flex-shrink: 0;
+}
+
+.app-spec-header h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.app-spec-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ── 6. Related Tags Cloud ── */
+.landing-tags-section {
+  background-color: var(--neo-accent-dim, rgba(244, 196, 48, 0.08));
+  border-bottom: 4px solid var(--neo-border);
+  padding: 2rem;
+}
+
+.tags-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tags-label {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tag-item {
+  background-color: var(--neo-card-bg);
+  border: 2px solid var(--neo-border);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  transition: background-color 0.15s ease;
+}
+
+.tag-item:hover {
+  background-color: var(--neo-accent);
+  color: #000;
+}
+
+/* ── 7. FAQ Accordion ── */
+.landing-faq {
+  padding: 5rem 2rem;
+  border-bottom: 4px solid var(--neo-border);
+  background-color: var(--neo-cream-bg, #fffdf5);
+  transition: background-color 0.4s ease;
+}
+
+.faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background-color: var(--neo-card-bg);
+  border: 4px solid var(--neo-border);
+  box-shadow: var(--neo-shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.faq-item--open {
+  transform: translateY(-2px);
+  box-shadow: var(--neo-shadow);
+}
+
+.faq-question-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  text-align: left;
+  color: var(--neo-text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.faq-question-icon {
+  color: var(--neo-accent);
+  flex-shrink: 0;
+}
+
+.faq-arrow-icon {
+  margin-left: auto;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.faq-arrow-icon--rotated {
+  transform: rotate(180deg);
+}
+
+.faq-answer-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out;
+}
+
+.faq-item--open .faq-answer-container {
+  max-height: 200px; /* high enough threshold to expand content */
+}
+
+.faq-answer-content {
+  padding: 0 1.5rem 1.5rem 3.25rem;
+  border-top: 2px dashed var(--neo-border);
+  margin-top: -0.25rem;
+}
+
+.faq-answer-content p {
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* ── 8. Call To Action ── */
+.landing-cta {
+  padding: 6rem 2rem;
+  border-bottom: 4px solid var(--neo-border);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-star-decor {
+  color: var(--neo-accent);
+  position: absolute;
+  opacity: 0.15;
+  animation: star-rotate 6s infinite linear;
+}
+
+.cta-star-decor.dec-1 {
+  top: -10%;
+  left: 5%;
+  width: 48px;
+  height: 48px;
+}
+
+.cta-star-decor.dec-2 {
+  bottom: -10%;
+  right: 5%;
+  width: 36px;
+  height: 36px;
+}
+
+@keyframes star-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.landing-cta h2 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.landing-cta p {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  opacity: 0.85;
+}
+
+.cta-button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.cta-back-portfolio {
+  background: none;
+  border: 3px solid var(--neo-border);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  color: var(--neo-text);
+}
+
+.cta-back-portfolio:hover {
+  background-color: var(--neo-secondary);
+}
+
+/* ── 9. Footer Section ── */
+.landing-footer {
+  background-color: #000;
+  color: #fff;
+  border-top: 4px solid var(--neo-border);
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+}
+
+.landing-footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.landing-footer p {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.landing-footer-seo {
+  font-size: 0.75rem !important;
+  opacity: 0.55 !important;
+  line-height: 1.5;
+  margin: 1.5rem 0 0 !important;
+}
+
+/* ── 10. Dark Theme / Cyber HUD Overrides ── */
+:root.dark-theme .mubixos-landing-page {
+  background-color: var(--neo-bg);
+  color: var(--neo-text);
+}
+
+:root.dark-theme .mubixos-landing-header {
+  border-color: var(--neo-border);
+  background-color: rgba(13, 14, 21, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+:root.dark-theme .landing-back-btn,
+:root.dark-theme .landing-spec-card,
+:root.dark-theme .arch-card,
+:root.dark-theme .app-spec-card,
+:root.dark-theme .tag-item,
+:root.dark-theme .faq-item {
+  background-color: rgba(13, 14, 21, 0.8);
+  border-color: var(--neo-border);
+  box-shadow: 0px 4px 20px var(--neo-shadow-color);
+}
+
+:root.dark-theme .arch-card:hover {
+  border-color: var(--neo-accent);
+  box-shadow: 0px 0px 30px rgba(0, 242, 254, 0.25);
+  transform: translate(-2px, -2px);
+}
+
+:root.dark-theme .landing-architecture,
+:root.dark-theme .landing-faq {
+  background-color: rgba(7, 7, 10, 0.95);
+  border-color: var(--neo-border);
+}
+
+:root.dark-theme .arch-icon-box {
+  background-color: rgba(13, 14, 21, 0.9);
+  border-color: var(--neo-accent);
+  color: var(--neo-accent);
+  box-shadow: 0px 0px 10px rgba(0, 242, 254, 0.15);
+}
+
+:root.dark-theme .faq-answer-content {
+  border-top-color: var(--neo-border);
+}
+
+:root.dark-theme .cta-back-portfolio {
+  border-color: var(--neo-border);
+  color: var(--neo-text);
+}
+
+:root.dark-theme .cta-back-portfolio:hover {
+  background-color: rgba(0, 242, 254, 0.15);
+  border-color: var(--neo-accent);
+}
+
+/* ── 11. Media Queries / Viewport Scales ── */
+@media (max-width: 768px) {
+  .landing-header-inner {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: space-between;
+  }
+
+  .landing-brand-logo {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+  }
+
+  .landing-back-btn,
+  .landing-header-actions {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+  }
+
+  .landing-back-btn {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .landing-header-actions > * {
+    width: 100% !important;
+    font-size: 0.85rem !important;
+    padding: 0.5rem 1rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+    display: inline-flex !important;
+  }
+
+  .landing-hero {
+    padding: 4.5rem 1.25rem 4rem;
+  }
+  
+  .landing-specs-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .landing-spec-card {
+    padding: 1rem 0.75rem;
+  }
+  
+  .spec-number {
+    font-size: 1.75rem;
+  }
+  
+  .landing-hero-actions {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+  
+  .landing-hero-actions > * {
+    width: 100% !important;
+  }
+
+  .architecture-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .features-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .faq-answer-content {
+    padding: 0 1.25rem 1.25rem 1.5rem;
+  }
+
+  .faq-question-btn {
+    padding: 1.25rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .cta-button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-button-group > * {
+    width: 100%;
+  }
+}

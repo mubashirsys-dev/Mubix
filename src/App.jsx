@@ -44,6 +44,7 @@ import { LoadingScreen } from "./components/LoadingScreen.jsx";
 import { Chatbot } from "./components/Chatbot.jsx";
 import { VisitorCounter } from "./components/VisitorCounter.jsx";
 import ThemeToggle from "./components/ThemeToggle.jsx";
+import { MubixOsLanding } from "./components/MubixOsLanding.jsx";
 import { resume } from "./data/resume.js";
 
 const navItems = [
@@ -105,6 +106,22 @@ function App() {
   const [featuresExpanded, setFeaturesExpanded] = useState(false);
   const [footerOffset, setFooterOffset] = useState(0);
   const [activePreviewWin, setActivePreviewWin] = useState("editor");
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  // Client-side router history synchronization
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  const navigateToPath = (path) => {
+    window.history.pushState({}, "", path);
+    setCurrentPath(path);
+    window.scrollTo(0, 0);
+  };
 
   const closeMenu = () => setMenuOpen(false);
   const handleLoadingComplete = useCallback(() => setIsLoading(false), []);
@@ -194,6 +211,14 @@ function App() {
 
   if (isLoading) return <LoadingScreen onComplete={handleLoadingComplete} />;
 
+  if (currentPath === "/mubix-os" || currentPath === "/projects/mubix-os") {
+    return (
+      <div className="app">
+        <MubixOsLanding navigateToHome={() => navigateToPath("/")} />
+      </div>
+    );
+  }
+
   const currentProject = allProjects[slideIndex];
 
   return (
@@ -215,6 +240,13 @@ function App() {
                 {item.label}
               </a>
             ))}
+            <a 
+              href="/mubix-os" 
+              onClick={(e) => { e.preventDefault(); closeMenu(); navigateToPath("/mubix-os"); }}
+              style={{ fontWeight: 800, color: "var(--neo-accent)" }}
+            >
+              MUBIX OS Lite
+            </a>
           </div>
 
           <div className="nav-controls">
@@ -472,14 +504,14 @@ function App() {
                   <span aria-hidden="true" style={{ fontSize: "1.2rem", marginLeft: "4px" }}>⚡</span>
                 </a>
                 <a
-                  href="#mubixos-features"
+                  href="/mubix-os"
                   className="btn btn--outline mubixos-explore-btn"
                   onClick={(e) => {
                     e.preventDefault();
-                    document.getElementById("mubixos-features")?.scrollIntoView({ behavior: "smooth" });
+                    navigateToPath("/mubix-os");
                   }}
                 >
-                  <span>Explore Features</span>
+                  <span>MUBIX OS Lite Features</span>
                   <span aria-hidden="true" style={{ marginLeft: "4px" }}>🔍</span>
                 </a>
               </div>
@@ -701,6 +733,15 @@ export default function MubixOS() {
             <span className="footer-logo">MUBIX</span>
           </div>
           <p>Designed & Built by Mohammed Mubashir</p>
+          <div className="footer-quick-links" style={{ display: "flex", justifyContent: "center", gap: "1.5rem", margin: "1rem 0", fontFamily: "Space Mono, monospace", fontSize: "0.85rem" }}>
+            <a 
+              href="/mubix-os" 
+              onClick={(e) => { e.preventDefault(); navigateToPath("/mubix-os"); }}
+              style={{ fontWeight: 700, color: "var(--neo-accent)", textDecoration: "underline" }}
+            >
+              MUBIX OS Lite
+            </a>
+          </div>
           <p className="seo-footer-text" style={{ fontSize: "0.8rem", opacity: 0.6, maxWidth: "600px", margin: "1rem auto 0", lineHeight: "1.5" }}>
             Mohammed Mubashir is an Indian Full Stack Developer, UI/UX Designer, and Computer Science student from Aurangabad, Maharashtra, India. Founder of MUBIX.
           </p>
