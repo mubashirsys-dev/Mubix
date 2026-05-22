@@ -1,4 +1,6 @@
-export function ContactCard({ icon: Icon, label, value, href, external }) {
+export function ContactCard({ icon: Icon, label, value, href, external, variant }) {
+  const cardClass = `contact-card ${variant ? `contact-card--${variant}` : ""}`;
+
   const content = (
     <>
       <div className="contact-card-icon">
@@ -14,7 +16,7 @@ export function ContactCard({ icon: Icon, label, value, href, external }) {
   if (href) {
     return (
       <a
-        className="contact-card"
+        className={cardClass}
         href={href}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
@@ -25,5 +27,5 @@ export function ContactCard({ icon: Icon, label, value, href, external }) {
     );
   }
 
-  return <div className="contact-card">{content}</div>;
+  return <div className={cardClass}>{content}</div>;
 }

@@ -6,70 +6,56 @@
   width: 100%;
 }
 
+/* Default - Light/Reality Theme (Brutalist style) */
 .visitor-counter-card {
-  background-color: #000;
-  color: #0f0;
-  font-family: 'Courier New', Courier, monospace;
+  background-color: var(--neo-white, #fff);
+  color: var(--neo-ink, #000);
+  font-family: "Space Grotesk", Arial, sans-serif;
   padding: 1rem 1.5rem;
-  border: 3px solid #fff;
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+  border: var(--border-thick, 4px solid #000);
+  box-shadow: var(--shadow-medium, 8px 8px 0px #000);
   text-align: center;
   position: relative;
   min-width: 220px;
   transform: rotate(-1deg);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-html.dark-theme .visitor-counter-card {
-  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.2);
-  border-color: #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .visitor-counter-card:hover {
   transform: rotate(0deg) translateY(-4px);
-  box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
-}
-
-html.dark-theme .visitor-counter-card:hover {
-  box-shadow: 12px 12px 0px rgba(255, 255, 255, 0.2);
+  box-shadow: 12px 12px 0px var(--neo-ink, #000);
 }
 
 .vc-border-line {
-  color: #0f0;
+  color: var(--neo-ink, #000);
   font-size: 1rem;
   letter-spacing: -1px;
   white-space: nowrap;
   overflow: hidden;
   user-select: none;
-  opacity: 0.8;
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  opacity: 0.15;
 }
 
 .vc-title {
-  font-size: 1rem;
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 3px;
   margin: 0.25rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+  color: var(--neo-ink, #000);
+  text-transform: uppercase;
 }
 
 .pulse-dot-green {
   width: 10px;
   height: 10px;
-  background-color: #0f0;
+  background-color: var(--neo-accent, #ff6b6b);
   border-radius: 50%;
-  box-shadow: 0 0 10px #0f0;
-  animation: pulse-green 1.5s infinite;
-}
-
-@keyframes pulse-green {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 255, 0, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+  box-shadow: 0 0 8px var(--neo-accent, #ff6b6b);
+  animation: pulse-red 1.5s infinite;
 }
 
 .vc-number {
@@ -78,8 +64,59 @@ html.dark-theme .visitor-counter-card:hover {
   line-height: 1;
   margin: 0.25rem 0;
   letter-spacing: 4px;
+  font-family: "Space Grotesk", monospace;
+  color: var(--neo-ink, #000);
+}
+
+@keyframes pulse-red {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(255, 107, 107, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+}
+
+/* ────────────────────────────────────────────────────────
+   Dark Theme / Cyber Mode Overrides (Terminal style) 
+   ──────────────────────────────────────────────────────── */
+html.dark-theme .visitor-counter-card {
+  background-color: #000;
+  color: #0f0;
+  font-family: 'Courier New', Courier, monospace;
+  border: 3px solid #0f0;
+  box-shadow: 8px 8px 0px rgba(0, 229, 255, 0.2);
+}
+
+html.dark-theme .visitor-counter-card:hover {
+  box-shadow: 12px 12px 0px rgba(0, 229, 255, 0.4);
+}
+
+html.dark-theme .vc-border-line {
+  color: #0f0;
+  opacity: 0.8;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+html.dark-theme .vc-title {
+  color: #0f0;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+}
+
+html.dark-theme .pulse-dot-green {
+  background-color: #0f0;
+  box-shadow: 0 0 10px #0f0;
+  animation: pulse-green 1.5s infinite;
+}
+
+html.dark-theme .vc-number {
+  color: #0f0;
+  font-family: 'Courier New', Courier, monospace;
   text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.4);
   animation: glitch 3s infinite alternate;
+}
+
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 255, 0, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
 }
 
 @keyframes glitch {
@@ -96,9 +133,10 @@ html.dark-theme .visitor-counter-card:hover {
     padding: 1rem;
   }
   .vc-number {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
+    letter-spacing: 2px;
   }
   .vc-title {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
 }

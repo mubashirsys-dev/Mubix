@@ -16,7 +16,7 @@ export const resume = {
   objective:
     "Computer Science student focused on building useful systems, websites, and AI-powered projects.",
   highlights: [
-    { value: "3+", label: "Projects" },
+    { value: "4+", label: "Projects" },
     { value: "76.69%", label: "Diploma Score" },
     { value: "AI + FS", label: "Learning AI + Full Stack" },
   ],
@@ -93,6 +93,28 @@ export const resume = {
         "Multi-section management system"
       ],
       liveUrl: "https://football-academy.in",
+      featured: true,
+    },
+    {
+      title: "MUBIX OS — INTERACTIVE WEB OPERATING SYSTEM",
+      stack: ["React", "HTML5", "CSS3", "Vercel", "Tailwind CSS", "Lucide Icons", "Web APIs"],
+      stats: ["Dynamic Windowing", "Simulated Filesystem", "Custom Terminal", "Interactive Apps"],
+      description:
+        "A comprehensive, fully-functional browser-based operating system designed to simulate a desktop environment. Features advanced custom window management (drag, resize, maximize, minimize), a virtual filesystem, a custom functional command-line terminal, retro games, text editors, browser simulators, custom theme engines, and system settings.",
+      purpose:
+        "Showcases advanced React architecture, complex state management, window layering, dynamic DOM manipulation, and interactive front-end development.",
+      features: [
+        "Interactive Desktop & Dynamic Window Manager",
+        "Custom Command-Line Terminal with simulated shell commands",
+        "Virtual Filesystem with file/directory creation and navigation",
+        "Integrated Retro Games and utilities",
+        "Rich Theme Engine (including Cyber, Light, and custom retro presets)",
+        "Built-in simulated Web Browser, Text Editor, and System Settings",
+        "Responsive design optimized for modern displays",
+        "Full sound effects and visual micro-animations for high immersion"
+      ],
+      liveUrl: "https://mubix-os.vercel.app/",
+      githubUrl: "https://github.com/mubashirsys-dev/MubixOs",
       featured: true,
     },
     {

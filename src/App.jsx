@@ -30,6 +30,10 @@ import {
   Moon,
   Twitter,
   X,
+  Terminal,
+  Gamepad,
+  FolderOpen,
+  Sparkles,
 } from "lucide-react";
 import { BrutalCard } from "./components/BrutalCard.jsx";
 import { NeoButton } from "./components/NeoButton.jsx";
@@ -100,6 +104,7 @@ function App() {
   const [transitionType, setTransitionType] = useState(null); // 'glitch' or 'fade'
   const [featuresExpanded, setFeaturesExpanded] = useState(false);
   const [footerOffset, setFooterOffset] = useState(0);
+  const [activePreviewWin, setActivePreviewWin] = useState("editor");
 
   const closeMenu = () => setMenuOpen(false);
   const handleLoadingComplete = useCallback(() => setIsLoading(false), []);
@@ -398,7 +403,7 @@ function App() {
                     </NeoButton>
                   )}
                   {currentProject.githubUrl && currentProject.githubUrl !== "#" && (
-                    <NeoButton href={currentProject.githubUrl} icon={Github} variant="secondary"
+                    <NeoButton href={currentProject.githubUrl} icon={Github} variant="github"
                       target="_blank" rel="noopener noreferrer">
                       GitHub
                     </NeoButton>
@@ -419,6 +424,199 @@ function App() {
               <button key={i} className={`carousel-dot ${i === slideIndex ? "carousel-dot--active" : ""}`}
                 onClick={() => setSlideIndex(i)} aria-label={`Go to project ${i + 1}`} type="button" />
             ))}
+          </div>
+        </RevealSection>
+
+        {/* ═══ NEXT-GEN MUBIX OS SHOWCASE ═══ */}
+        <RevealSection className="mubixos-showcase-section" id="mubix-os-showcase">
+          <div className="workspace-dotted-overlay"></div>
+          <div className="mubixos-showcase-container">
+            {/* Left Column: Premium Pitch */}
+            <div className="mubixos-showcase-left">
+              <div className="mubixos-badge">
+                <Sparkles size={14} className="badge-sparkle-icon" />
+                <span>Featured Interactive Product</span>
+              </div>
+              <h2 className="mubixos-showcase-headline">
+                MEET THE FUTURE OF LIGHTWEIGHT COMPUTING
+              </h2>
+              <p className="mubixos-showcase-subheadline">
+                An interactive, fully functional browser-based operating system designed to simulate a complete, immersive desktop environment.
+              </p>
+              
+              {/* Mini spec stats */}
+              <div className="mubixos-specs-grid">
+                <div className="spec-item">
+                  <span className="spec-val">120ms</span>
+                  <span className="spec-lbl">Simulated Boot Time</span>
+                </div>
+                <div className="spec-item">
+                  <span className="spec-val">&lt;1.5MB</span>
+                  <span className="spec-lbl">Runtime Memory</span>
+                </div>
+                <div className="spec-item">
+                  <span className="spec-val">100%</span>
+                  <span className="spec-lbl">Vanilla Front-end</span>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="mubixos-showcase-actions">
+                <a
+                  href="https://mubix-os.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--secondary mubixos-launch-btn"
+                >
+                  <span>Launch MUBIX OS</span>
+                  <span aria-hidden="true" style={{ fontSize: "1.2rem", marginLeft: "4px" }}>⚡</span>
+                </a>
+                <a
+                  href="#mubixos-features"
+                  className="btn btn--outline mubixos-explore-btn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("mubixos-features")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  <span>Explore Features</span>
+                  <span aria-hidden="true" style={{ marginLeft: "4px" }}>🔍</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Immersive OS Mockup Preview */}
+            <div className="mubixos-showcase-right">
+              <div className="desktop-simulator">
+                {/* Simulator Top Menu Bar */}
+                <div className="simulator-bar">
+                  <div className="bar-dots">
+                    <span className="bar-dot bar-dot--close"></span>
+                    <span className="bar-dot bar-dot--minimize"></span>
+                    <span className="bar-dot bar-dot--maximize"></span>
+                  </div>
+                  <div className="bar-title">Mubix OS Environment (Simulated)</div>
+                  <div className="bar-time">11:27 PM</div>
+                </div>
+
+                {/* Desktop Workspace */}
+                <div className="desktop-workspace">
+                  {/* Workspace Grid Pattern Overlay */}
+                  <div className="workspace-grid-bg"></div>
+
+                  {/* Window 1: Terminal Shell */}
+                  <div 
+                    className={`simulated-window window--terminal ${activePreviewWin === "terminal" ? "window--active" : ""}`}
+                    onClick={() => setActivePreviewWin("terminal")}
+                    style={{ zIndex: activePreviewWin === "terminal" ? 10 : 2 }}
+                  >
+                    <div className="window-header">
+                      <Terminal size={14} className="win-icon" />
+                      <span>mubix-shell.sh</span>
+                    </div>
+                    <div className="window-content terminal-content">
+                      <div className="terminal-line"><span className="term-prompt">mubix@desktop:~$</span> neofetch</div>
+                      <div className="terminal-line term-output term-output--cyan">MUBIX OS [v1.2.0]</div>
+                      <div className="terminal-line term-output">OS Type: Browser Emulator</div>
+                      <div className="terminal-line term-output">Uptime: 45 mins</div>
+                      <div className="terminal-line term-output">Host: Vercel Cloud Node</div>
+                      <div className="terminal-line term-output term-output--green">Status: Active & Online</div>
+                    </div>
+                  </div>
+
+                  {/* Window 2: Code Editor */}
+                  <div 
+                    className={`simulated-window window--editor ${activePreviewWin === "editor" ? "window--active" : ""}`}
+                    onClick={() => setActivePreviewWin("editor")}
+                    style={{ zIndex: activePreviewWin === "editor" ? 10 : 2 }}
+                  >
+                    <div className="window-header">
+                      <Code2 size={14} className="win-icon" />
+                      <span>App.jsx</span>
+                    </div>
+                    <div className="window-content editor-content">
+                      <pre><code>
+{`import React from 'react';
+export default function MubixOS() {
+  return (
+    <div className="os-core">
+      <h1>Mubix OS Online</h1>
+      <DesktopEnvironment />
+    </div>
+  );
+}`}
+                      </code></pre>
+                    </div>
+                  </div>
+
+                  {/* Window 3: Retro Game */}
+                  <div 
+                    className={`simulated-window window--game ${activePreviewWin === "game" ? "window--active" : ""}`}
+                    onClick={() => setActivePreviewWin("game")}
+                    style={{ zIndex: activePreviewWin === "game" ? 10 : 2 }}
+                  >
+                    <div className="window-header">
+                      <Gamepad size={14} className="win-icon" />
+                      <span>SnakeRetro.exe</span>
+                    </div>
+                    <div className="window-content game-content">
+                      <div className="game-grid-sim">
+                        <div className="sim-snake" style={{ top: "30%", left: "40%" }}></div>
+                        <div className="sim-snake-body" style={{ top: "30%", left: "30%" }}></div>
+                        <div className="sim-food" style={{ top: "60%", left: "70%" }}></div>
+                      </div>
+                      <div className="game-status-bar">
+                        <span>Score: 1,840</span>
+                        <span>High: 9,990</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Simulator Floating App Dock */}
+                  <div className="simulator-dock">
+                    <div className={`dock-item ${activePreviewWin === "terminal" ? "dock-item--active" : ""}`}
+                      onClick={() => setActivePreviewWin("terminal")} title="Terminal Shell">
+                      <Terminal size={20} />
+                    </div>
+                    <div className={`dock-item ${activePreviewWin === "editor" ? "dock-item--active" : ""}`}
+                      onClick={() => setActivePreviewWin("editor")} title="Code Editor">
+                      <Code2 size={20} />
+                    </div>
+                    <div className={`dock-item ${activePreviewWin === "game" ? "dock-item--active" : ""}`}
+                      onClick={() => setActivePreviewWin("game")} title="Retro Games">
+                      <Gamepad size={20} />
+                    </div>
+                    <div className="dock-item" title="Filesystem">
+                      <FolderOpen size={20} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Floating modular tactile feature cards */}
+          <div className="mubixos-features-grid" id="mubixos-features">
+            <BrutalCard className="feature-block-card block-card--yellow">
+              <div className="card-badge">⚡ Advanced Core</div>
+              <h3>Dynamic Windowing</h3>
+              <p>Simulates real desktop multitasking. Click to bring forward, drag, maximize, minimize, or resize dynamic app frames.</p>
+            </BrutalCard>
+            <BrutalCard className="feature-block-card block-card--purple">
+              <div className="card-badge">📁 Storage</div>
+              <h3>Virtual Filesystem</h3>
+              <p>Fully functional simulation of file trees. Create files, make folders, remove objects, and inspect hierarchy dynamically.</p>
+            </BrutalCard>
+            <BrutalCard className="feature-block-card block-card--coral">
+              <div className="card-badge">💻 Developer Shell</div>
+              <h3>Interactive Terminal</h3>
+              <p>Hacker command terminal. Execute simulated directory changes, parse neofetch stats, clear, and print custom logs.</p>
+            </BrutalCard>
+            <BrutalCard className="feature-block-card block-card--blue">
+              <div className="card-badge">🎮 Gaming Hub</div>
+              <h3>Retro Game Center</h3>
+              <p>Built-in responsive versions of classical games (Snake, Tetris, Minesweeper) compiled directly for quick plays.</p>
+            </BrutalCard>
           </div>
         </RevealSection>
 
@@ -461,22 +659,35 @@ function App() {
               <p className="contact-subtext">
                 Have a project, collaboration idea, freelance work, or just want to connect? Send me a message through the contact form.
               </p>
+              
+              <a
+                className="contact-primary-cta"
+                href={resume.googleFormUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="cta-icon-box">
+                  <ExternalLink size={24} aria-hidden="true" />
+                </div>
+                <div className="cta-body">
+                  <span className="cta-label">Get in Touch</span>
+                  <span className="cta-value">Open Google Form Contact ⚡</span>
+                </div>
+              </a>
             </div>
             <div className="contact-grid">
-              <ContactCard icon={ExternalLink} label="Google Form Contact" value="Contact Me"
-                href={resume.googleFormUrl} external />
               <ContactCard icon={Instagram} label="Instagram" value={`@${resume.instagram}`}
-                href={`https://instagram.com/${resume.instagram}`} external />
+                href={`https://instagram.com/${resume.instagram}`} external variant="instagram" />
               <ContactCard icon={Github} label="GitHub" value="mubashirsys-dev"
-                href={resume.github} external />
+                href={resume.github} external variant="github" />
               <ContactCard icon={Twitter} label="X (Twitter)" value="@mubix.o_0"
-                href={resume.x} external />
+                href={resume.x} external variant="twitter" />
               <ContactCard icon={Facebook} label="Facebook" value="Mubashir"
-                href={resume.facebook} external />
+                href={resume.facebook} external variant="facebook" />
               <ContactCard icon={Linkedin} label="LinkedIn" value="Mohammed Mubashir"
-                href={resume.linkedin} external />
-              <ContactCard icon={MapPin} label="Location" value={resume.location} />
-              <ContactCard icon={Star} label="Availability Status" value="Open for Work" />
+                href={resume.linkedin} external variant="linkedin" />
+              <ContactCard icon={MapPin} label="Location" value={resume.location} variant="location" />
+              <ContactCard icon={Star} label="Availability Status" value="Open for Work" variant="availability" />
             </div>
           </div>
         </RevealSection>

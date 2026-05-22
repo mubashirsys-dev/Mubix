@@ -235,6 +235,46 @@
     animation: stampSmash 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
+/* Back to Reality Mobile Transition Optimization */
+@media (max-width: 768px) {
+    .comic-wipe-content {
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .comic-bounce-text {
+        font-size: clamp(1.5rem, 7.5vw, 2.6rem);
+        -webkit-text-stroke: 2px var(--neo-ink, #000);
+        text-shadow: 4px 4px 0 var(--neo-ink, #000);
+        text-align: center;
+        width: 100%;
+        word-wrap: break-word;
+        line-height: 1.2;
+    }
+
+    .comic-stamp {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        border-width: 3px;
+        padding: 0.35rem 0.75rem;
+        animation: stampSmashMobile 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+}
+
+@keyframes stampSmashMobile {
+    0% { transform: rotate(20deg) scale(2); opacity: 0; }
+    45% { transform: rotate(20deg) scale(2); opacity: 0; }
+    55% { transform: rotate(-5deg) scale(1); opacity: 1; box-shadow: 0 0 0 3px var(--neo-accent, #ff6b6b); }
+    80% { transform: rotate(-5deg) scale(1); opacity: 1; }
+    100% { transform: translateY(-30px) rotate(-10deg) scale(0.85); opacity: 0; }
+}
+
+
 @keyframes paperSlideUp {
     0% { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
     20% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
@@ -935,6 +975,30 @@ img {
 
 .neo-button--secondary {
     background: var(--neo-secondary)
+}
+
+.neo-button--github {
+    background: #111111 !important;
+    color: #ffffff !important;
+    border: var(--border-thick, 3px solid #111) !important;
+}
+
+.neo-button--github:hover {
+    background: #24292e !important;
+    color: #ffffff !important;
+}
+
+:root.dark-theme .neo-button--github {
+    background: rgba(13, 14, 21, 0.9) !important;
+    border: 1px solid rgba(0, 229, 255, 0.4) !important;
+    color: var(--neo-accent, #00e5ff) !important;
+}
+
+:root.dark-theme .neo-button--github:hover {
+    background: rgba(0, 229, 255, 0.15) !important;
+    border-color: rgba(0, 229, 255, 0.7) !important;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3) !important;
+    color: #ffffff !important;
 }
 
 .neo-button--accent {

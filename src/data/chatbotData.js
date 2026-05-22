@@ -53,11 +53,15 @@ const responses = [
   },
   {
     keywords: ["projects", "what have you built", "portfolio projects"],
-    answer: "I’ve built a College Management System with AI chatbot integration, a Football Academy website, and a Book Portfolio website.",
+    answer: "I’ve built MUBIX OS (a beautiful, fully-functional browser-based operating system), a Football Academy website, a College Management System with AI chatbot integration, and a Book Portfolio website.",
   },
   {
     keywords: ["best project", "main project", "top project"],
-    answer: "One of my main projects is a College Management System integrated with an AI chatbot and admin management features.",
+    answer: "My top featured projects are MUBIX OS (https://mubix-os.vercel.app/) and a Football Academy management platform (https://football-academy.in).",
+  },
+  {
+    keywords: ["mubix os", "browser os", "web os", "operating system"],
+    answer: "MUBIX OS is a fully interactive, browser-based operating system featuring dynamic window management, a custom terminal, retro games, filesystems, and a gorgeous desktop environment. Check it out here: https://mubix-os.vercel.app/",
   },
   {
     keywords: ["ai", "artificial intelligence", "chatbots"],
