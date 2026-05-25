@@ -9,7 +9,7 @@ export function ProfileCard() {
           <div className="profile-image-container">
             <img
               src={resume.imageUrl}
-              alt="Mohammed Mubashir"
+              alt="Mohammed Mubashir (Mubix) - Full Stack & AI Developer in Aurangabad, Maharashtra, India"
               className="profile-image profile-image--light"
               loading="eager"
               fetchPriority="high"
@@ -18,7 +18,7 @@ export function ProfileCard() {
             />
             <img
               src="/MUBASHIR-CYBER.jpeg"
-              alt="Mohammed Mubashir Cyber"
+              alt="Mohammed Mubashir (Mubix) - Cyber Avatar and Software Architect"
               className="profile-image profile-image--dark"
               loading="eager"
               fetchPriority="high"

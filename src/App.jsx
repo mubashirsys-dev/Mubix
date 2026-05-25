@@ -229,7 +229,7 @@ function App() {
       <header className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
         <nav className="nav-shell" aria-label="Primary navigation">
           <a className="logo-mark" href="#top" onClick={closeMenu} aria-label="Go to top">
-            <img src={resume.logoUrl} alt="MUBIX" className="nav-logo-img" width="32" height="32" fetchPriority="high" />
+            <img src={resume.logoUrl} alt="Mubix Logo - Mohammed Mubashir Portfolio" className="nav-logo-img" width="32" height="32" fetchPriority="high" />
             <span>{resume.shortName}</span>
           </a>
 
@@ -729,7 +729,7 @@ export default function MubixOS() {
       <footer className="site-footer">
         <div className="footer-inner">
           <div className="footer-brand">
-            <img src={resume.logoUrl} alt="MUBIX" className="footer-logo-img" width="40" height="40" loading="lazy" />
+            <img src={resume.logoUrl} alt="Mubix Logo by Mohammed Mubashir" className="footer-logo-img" width="40" height="40" loading="lazy" />
             <span className="footer-logo">MUBIX</span>
           </div>
           <p>Designed & Built by Mohammed Mubashir</p>
@@ -743,7 +743,7 @@ export default function MubixOS() {
             </a>
           </div>
           <p className="seo-footer-text" style={{ fontSize: "0.8rem", opacity: 0.6, maxWidth: "600px", margin: "1rem auto 0", lineHeight: "1.5" }}>
-            Mohammed Mubashir is an Indian Full Stack Developer, UI/UX Designer, and Computer Science student from Aurangabad, Maharashtra, India. Founder of MUBIX.
+            Mohammed Mubashir (Mubix) is a Full Stack & AI Developer, Prompt Engineer, and student pursuing BTech Computer Science in Aurangabad, Maharashtra, India. Specialized in AI website development, prompt wizard design, and search optimization solutions.
           </p>
           <div className="footer-links">
             <a href={resume.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
