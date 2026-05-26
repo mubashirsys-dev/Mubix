@@ -39,32 +39,67 @@ Built under the **Mubix** brand by **Mohammed Mubashir**, a BTech Computer Scien
 
 ## 📺 Premium Visuals & Screenshot Showcases
 
-### 🌓 Dual Themes: Minimalist Brutalist vs. Cyberpunk Mode
+The MUBIX Portfolio interface adapts seamlessly to multiple theme contexts, device viewports, and custom functional shells. 
 
-<table>
+### 🌓 Theme Showcases (Light Brutalist vs. Cyberpunk Mode)
+
+<table width="100%">
   <tr>
-    <td width="50%">
-      <p align="center"><strong>Standard Light Brutalist Mode</strong></p>
-      <img src="screenshots/updated-desktop.png" alt="Light Brutalist Desktop Layout" width="100%">
+    <td width="50%" align="center" valign="top">
+      <h4>☀️ Standard Light Brutalist Mode</h4>
+      <a href="screenshots/updated-desktop.png">
+        <img src="screenshots/updated-desktop.png" alt="Light Brutalist Desktop Layout" width="100%" style="border-radius: 8px; border: 2px solid #111111; box-shadow: 4px 4px 0px #111111;">
+      </a>
+      <p align="center"><sub>Clean, high-contrast cream background with solid brutalist card offsets</sub></p>
     </td>
-    <td width="50%">
-      <p align="center"><strong>Cyberpunk System Mode</strong></p>
-      <img src="public/MUBASHIR-CYBER.jpeg" alt="Cyber Mode Style Preview" width="100%">
+    <td width="50%" align="center" valign="top">
+      <h4>🌙 Cyberpunk System Mode</h4>
+      <a href="screenshots/updated-cyber.png">
+        <img src="screenshots/updated-cyber.png" alt="Cyberpunk System Desktop Layout" width="100%" style="border-radius: 8px; border: 2px solid #00ffcc; box-shadow: 4px 4px 0px #ff007f;">
+      </a>
+      <p align="center"><sub>Futuristic neon interface with glitch overlays and active command configurations</sub></p>
     </td>
   </tr>
 </table>
 
-### 💬 Client-Side AI Chatbot & Responsive Design
+### 💬 Interactive Assistance & Mobile Responsiveness
 
-<table>
+<table width="100%">
   <tr>
-    <td width="50%">
-      <p align="center"><strong>Interactive Developer Chatbot</strong></p>
-      <img src="screenshots/mobile-menu.png" alt="AI Chatbot Interaction Mobile view" width="100%">
+    <td width="50%" align="center" valign="top">
+      <h4>🤖 Interactive Developer Chatbot</h4>
+      <a href="screenshots/mobile-menu.png">
+        <img src="screenshots/mobile-menu.png" alt="AI Chatbot Mobile Interface" width="280" style="border-radius: 8px; border: 2px solid #111111; box-shadow: 4px 4px 0px #111111;">
+      </a>
+      <p align="center"><sub>Client-side AI assistant simulation with telemetry logs</sub></p>
     </td>
-    <td width="50%">
-      <p align="center"><strong>Mobile Responsive Adaptability</strong></p>
-      <img src="screenshots/updated-mobile.png" alt="Mobile View Responsive Showcase" width="100%">
+    <td width="50%" align="center" valign="top">
+      <h4>📱 Mobile Responsive Adaptability</h4>
+      <a href="screenshots/updated-mobile.png">
+        <img src="screenshots/updated-mobile.png" alt="Mobile View Responsive Showcase" width="280" style="border-radius: 8px; border: 2px solid #111111; box-shadow: 4px 4px 0px #111111;">
+      </a>
+      <p align="center"><sub>Fluid grid system optimized for standard portrait touch viewports</sub></p>
+    </td>
+  </tr>
+</table>
+
+### 💻 Custom Shells & Resume Showcases
+
+<table width="100%">
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <h4>📄 Projects & Resume Timeline</h4>
+      <a href="screenshots/updated-resume-page-1.png">
+        <img src="screenshots/updated-resume-page-1.png" alt="Projects & Resume Page Layout" width="100%" style="border-radius: 8px; border: 2px solid #111111; box-shadow: 4px 4px 0px #111111;">
+      </a>
+      <p align="center"><sub>Structured experience cards, GPA charts, and project cards</sub></p>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <h4>🖥️ MUBIX OS (Terminal Shell)</h4>
+      <a href="screenshots/updated-os.png">
+        <img src="screenshots/updated-os.png" alt="MUBIX OS Desktop Environment" width="100%" style="border-radius: 8px; border: 2px solid #00ffcc; box-shadow: 4px 4px 0px #00ffcc;">
+      </a>
+      <p align="center"><sub>Browser-simulated OS desktop environment with file system and retro apps</sub></p>
     </td>
   </tr>
 </table>
