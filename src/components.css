@@ -958,6 +958,52 @@
     background: var(--neo-white);
 }
 
+@media (max-width: 576px) {
+    .resume-modal-card {
+        width: calc(100% - var(--space-3) * 2);
+        max-height: 95vh;
+        margin: var(--space-3) auto;
+    }
+    
+    .resume-modal-header {
+        padding: var(--space-2);
+    }
+    
+    .resume-modal-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .resume-modal-close {
+        width: 30px;
+        height: 30px;
+        font-size: 1.4rem;
+    }
+    
+    .resume-modal-body {
+        padding: var(--space-2);
+    }
+    
+    .resume-preview-img {
+        max-height: 52vh;
+        border: var(--border-thick);
+    }
+    
+    .resume-modal-footer {
+        flex-direction: column;
+        gap: var(--space-2);
+        padding: var(--space-2);
+        align-items: stretch;
+    }
+    
+    .resume-modal-footer .neo-button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+
 @keyframes fadeInResume {
     from { opacity: 0; }
     to { opacity: 1; }
