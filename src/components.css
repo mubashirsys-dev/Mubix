@@ -818,59 +818,93 @@
 @media(max-width:639px) {
     /* Hero Section Polish to prevent right-side overflow */
     .hero {
-        overflow: hidden;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
+        display: block !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
     }
     .hero-copy {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        box-sizing: border-box;
-        overflow: hidden;
-    }
-    .hero h1 {
-        font-size: 2.2rem !important;
-        word-break: break-word;
-    }
-    .hero-name-outline {
-        -webkit-text-stroke: 2px var(--neo-ink);
-    }
-    .availability-badge {
-        font-size: 0.72rem;
-        letter-spacing: 0.06em;
-        max-width: 100%;
-        white-space: normal;
-        display: inline-flex;
-    }
-    .hero-role {
-        font-size: 0.95rem;
-        max-width: 100%;
-        word-break: break-word;
-        box-sizing: border-box;
-    }
-    .hero-text {
-        font-size: 0.95rem;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-    .hero-socials {
-        flex-wrap: wrap;
-        gap: var(--space-2);
-    }
-    .hero-actions {
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-    .hero-actions .neo-button {
+        display: block !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: center;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .hero h1 {
+        font-size: 2.1rem !important;
+        word-break: break-word !important;
+        max-width: 100% !important;
+        line-height: 1.0 !important;
+    }
+    .hero-name-outline {
+        -webkit-text-stroke: 2px var(--neo-ink) !important;
+    }
+    .availability-badge {
+        font-size: 0.7rem !important;
+        letter-spacing: 0.04em !important;
+        max-width: 100% !important;
+        width: fit-content !important;
+        white-space: normal !important;
+        display: inline-flex !important;
+        box-sizing: border-box !important;
+    }
+    .hero-role {
+        display: block !important;
+        font-size: 0.9rem !important;
+        max-width: 100% !important;
+        width: fit-content !important;
+        word-break: break-word !important;
+        box-sizing: border-box !important;
+        transform: rotate(0deg) !important;
+    }
+    .hero-text {
+        font-size: 0.95rem !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        word-break: break-word !important;
+    }
+    .hero-socials {
+        flex-wrap: wrap !important;
+        gap: var(--space-2) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .hero-actions {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        display: block !important;
+    }
+    .hero-actions .neo-button {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        margin-bottom: var(--space-2) !important;
+        justify-content: center !important;
+        align-items: center !important;
+        transform: none !important;
+        animation: none !important;
+    }
+    .hero-actions .neo-button:last-child {
+        margin-bottom: 0 !important;
+    }
+    .cta-highlight,
+    .preview-btn-glow {
+        animation: none !important;
+        transform: none !important;
+    }
+    .cta-highlight:hover,
+    .preview-btn-glow:hover {
+        transform: none !important;
     }
 
     .carousel-card {
