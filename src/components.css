@@ -816,6 +816,53 @@
 
 /* ── Mobile Polish ── */
 @media(max-width:480px) {
+    /* Hero Section Polish to prevent right-side overflow */
+    .hero {
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+    }
+    .hero-copy {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    .hero h1 {
+        font-size: 2.2rem !important;
+        word-break: break-word;
+    }
+    .hero-name-outline {
+        -webkit-text-stroke: 2px var(--neo-ink);
+    }
+    .availability-badge {
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        max-width: 100%;
+        white-space: normal;
+        display: inline-flex;
+    }
+    .hero-role {
+        font-size: 0.95rem;
+        max-width: 100%;
+        word-break: break-word;
+        box-sizing: border-box;
+    }
+    .hero-text {
+        font-size: 0.95rem;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    .hero-socials {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+    }
+    .hero-actions .neo-button {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
     .carousel-card {
         padding: var(--space-2);
     }
