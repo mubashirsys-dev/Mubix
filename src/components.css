@@ -449,7 +449,9 @@
 .carousel-viewport {
     flex: 1;
     min-width: 0;
-    overflow: hidden
+    overflow: hidden;
+    padding: 10px 16px 16px 10px;
+    margin: -10px -16px -16px -10px;
 }
 
 .carousel-card {
@@ -859,5 +861,136 @@
         padding: 0.4rem 0.6rem;
         font-size: 0.75rem;
         margin-bottom: var(--space-2);
+    }
+}
+
+/* ═══ RESUME PREVIEW MODAL ═══ */
+.resume-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3);
+    animation: fadeInResume 0.2s ease-out;
+}
+
+.resume-modal-card {
+    background: var(--neo-white);
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    animation: zoomInResume 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.resume-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    border-bottom: var(--border-thick);
+}
+
+.resume-modal-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.resume-modal-close {
+    background: var(--neo-secondary);
+    border: var(--border-thin);
+    width: 36px;
+    height: 36px;
+    font-size: 1.8rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-small);
+    transition: transform 0.1s;
+}
+
+.resume-modal-close:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--neo-ink);
+}
+
+.resume-modal-close:active {
+    transform: translate(0, 0);
+    box-shadow: var(--shadow-small);
+}
+
+.resume-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--neo-bg);
+}
+
+.resume-preview-img {
+    max-width: 100%;
+    max-height: 55vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: var(--border-thick);
+    box-shadow: var(--shadow-medium);
+}
+
+.resume-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-top: var(--border-thick);
+    background: var(--neo-white);
+}
+
+@keyframes fadeInResume {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomInResume {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ── Button Glow Animation ── */
+.preview-btn-glow {
+    animation: buttonGlow 1.8s infinite alternate ease-in-out;
+}
+
+@keyframes buttonGlow {
+    from {
+        box-shadow: var(--shadow-small), 0 0 4px rgba(255, 217, 61, 0.3);
+    }
+    to {
+        box-shadow: var(--shadow-small), 0 0 20px rgba(255, 217, 61, 0.85);
+    }
+}
+
+:root.dark-theme .preview-btn-glow {
+    animation: buttonGlowDark 1.8s infinite alternate ease-in-out;
+}
+
+@keyframes buttonGlowDark {
+    from {
+        box-shadow: var(--shadow-small), 0 0 4px rgba(176, 38, 255, 0.3);
+    }
+    to {
+        box-shadow: var(--shadow-small), 0 0 20px rgba(176, 38, 255, 0.85);
     }
 }

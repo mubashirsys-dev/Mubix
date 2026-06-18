@@ -61,26 +61,6 @@ export const resume = {
   ],
   projects: [
     {
-      title: "Mubix Prompt Maker",
-      stack: ["React", "Tailwind CSS", "Zod Validation", "Framer Motion", "LLM APIs", "JSON Schema"],
-      stats: ["AI Prompt Systems", "Telemetry Guided", "Complexity Aware", "Brutalist UI"],
-      description:
-        "A highly optimized prompt engineering platform designed to build, test, and deploy structured system instructions and complex prompt blueprints for LLMs. Features a dynamic complexity-gated 9-step prompt generator wizard with telemetry tracking, secure layouts, and interactive section builders.",
-      purpose:
-        "Automates prompt architecture generation for developer workflows and optimizes context window utilization.",
-      features: [
-        "Dynamic complexity-gated 9-step prompt generation wizard",
-        "Interactive Footer preview and runtime telemetry tracking panel",
-        "Modular social platform selectors and visual code layout builders",
-        "Zod-validated configuration forms and structured schema templates",
-        "Neo-brutalist theme structure with smooth micro-animations",
-        "Highly optimized for token reduction and LLM compliance"
-      ],
-      liveUrl: "https://mubixprompts.vercel.app",
-      githubUrl: "https://github.com/mubashirsys-dev/mubixprompts",
-      featured: true,
-    },
-    {
       title: "Football Leaders Academy Website",
       stack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "AI Chatbot", "CMS Panel", "QR System", "Payment Gateway"],
       stats: ["AI Integrated", "Database Powered", "CMS Enabled", "Responsive Design"],
@@ -100,6 +80,26 @@ export const resume = {
       ],
       liveUrl: "https://football-academy.in",
       githubUrl: "#",
+      featured: true,
+    },
+    {
+      title: "Mubix Prompt Maker",
+      stack: ["React", "Tailwind CSS", "Zod Validation", "Framer Motion", "LLM APIs", "JSON Schema"],
+      stats: ["AI Prompt Systems", "Telemetry Guided", "Complexity Aware", "Brutalist UI"],
+      description:
+        "A highly optimized prompt engineering platform designed to build, test, and deploy structured system instructions and complex prompt blueprints for LLMs. Features a dynamic complexity-gated 9-step prompt generator wizard with telemetry tracking, secure layouts, and interactive section builders.",
+      purpose:
+        "Automates prompt architecture generation for developer workflows and optimizes context window utilization.",
+      features: [
+        "Dynamic complexity-gated 9-step prompt generation wizard",
+        "Interactive Footer preview and runtime telemetry tracking panel",
+        "Modular social platform selectors and visual code layout builders",
+        "Zod-validated configuration forms and structured schema templates",
+        "Neo-brutalist theme structure with smooth micro-animations",
+        "Highly optimized for token reduction and LLM compliance"
+      ],
+      liveUrl: "https://mubixprompts.vercel.app",
+      githubUrl: "https://github.com/mubashirsys-dev/mubixprompts",
       featured: true,
     },
     {

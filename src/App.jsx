@@ -13,6 +13,7 @@ import {
   CreditCard,
   Database,
   Download,
+  Eye,
   ExternalLink,
   Facebook,
   Github,
@@ -55,9 +56,9 @@ const navItems = [
 ];
 
 const marqueeItems = [
-  "HTML","CSS","JavaScript","PHP","Python",
-  "C#","SQL Server","GitHub","Vercel","AI Projects",
-  "Full Stack","React",
+  "HTML", "CSS", "JavaScript", "PHP", "Python",
+  "C#", "SQL Server", "GitHub", "Vercel", "AI Projects",
+  "Full Stack", "React",
 ];
 
 const skillIcons = { Programming: Code2, Tools: Database, Languages: Languages };
@@ -107,6 +108,7 @@ function App() {
   const [footerOffset, setFooterOffset] = useState(0);
   const [activePreviewWin, setActivePreviewWin] = useState("editor");
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   // Client-side router history synchronization
   useEffect(() => {
@@ -142,7 +144,7 @@ function App() {
   useEffect(() => {
     const fn = () => {
       setScrolled(window.scrollY > 20);
-      
+
       const footer = document.querySelector('.site-footer');
       if (footer) {
         const rect = footer.getBoundingClientRect();
@@ -171,7 +173,7 @@ function App() {
   const toggleTheme = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    
+
     const isGoingCyber = theme === "light";
     setTransitionType(isGoingCyber ? 'glitch' : 'comic-wipe');
 
@@ -190,7 +192,7 @@ function App() {
       setTimeout(() => {
         setTheme("light");
       }, 700); // Switch right when paper covers the screen
-      
+
       setTimeout(() => {
         setIsTransitioning(false);
         setTransitionType(null);
@@ -240,8 +242,8 @@ function App() {
                 {item.label}
               </a>
             ))}
-            <a 
-              href="/mubix-os" 
+            <a
+              href="/mubix-os"
               onClick={(e) => { e.preventDefault(); closeMenu(); navigateToPath("/mubix-os"); }}
               style={{ fontWeight: 800, color: "var(--neo-accent)" }}
             >
@@ -280,6 +282,9 @@ function App() {
 
             <div className="hero-actions" aria-label="Primary actions">
               <NeoButton href="#projects" icon={ArrowRight}>View Projects</NeoButton>
+              <NeoButton onClick={() => setIsResumeOpen(true)} icon={Eye} variant="secondary" className="preview-btn-glow">
+                Preview Resume
+              </NeoButton>
               <NeoButton download href={resume.resumeUrl} icon={Download} variant="secondary">
                 Download Resume
               </NeoButton>
@@ -308,7 +313,7 @@ function App() {
                 <Facebook size={18} />
               </a>
             </div>
-            
+
             <div className="hero-visitor-counter">
               <VisitorCounter />
             </div>
@@ -407,7 +412,7 @@ function App() {
                     ))}
                   </ul>
                   {currentProject.features.length > 4 && (
-                    <button 
+                    <button
                       className="feature-toggle-btn"
                       onClick={() => setFeaturesExpanded(!featuresExpanded)}
                       type="button"
@@ -475,7 +480,7 @@ function App() {
               <p className="mubixos-showcase-subheadline">
                 An interactive, fully functional browser-based operating system designed to simulate a complete, immersive desktop environment.
               </p>
-              
+
               {/* Mini spec stats */}
               <div className="mubixos-specs-grid">
                 <div className="spec-item">
@@ -537,7 +542,7 @@ function App() {
                   <div className="workspace-grid-bg"></div>
 
                   {/* Window 1: Terminal Shell */}
-                  <div 
+                  <div
                     className={`simulated-window window--terminal ${activePreviewWin === "terminal" ? "window--active" : ""}`}
                     onClick={() => setActivePreviewWin("terminal")}
                     style={{ zIndex: activePreviewWin === "terminal" ? 10 : 2 }}
@@ -557,7 +562,7 @@ function App() {
                   </div>
 
                   {/* Window 2: Code Editor */}
-                  <div 
+                  <div
                     className={`simulated-window window--editor ${activePreviewWin === "editor" ? "window--active" : ""}`}
                     onClick={() => setActivePreviewWin("editor")}
                     style={{ zIndex: activePreviewWin === "editor" ? 10 : 2 }}
@@ -568,7 +573,7 @@ function App() {
                     </div>
                     <div className="window-content editor-content">
                       <pre><code>
-{`import React from 'react';
+                        {`import React from 'react';
 export default function MubixOS() {
   return (
     <div className="os-core">
@@ -582,7 +587,7 @@ export default function MubixOS() {
                   </div>
 
                   {/* Window 3: Retro Game */}
-                  <div 
+                  <div
                     className={`simulated-window window--game ${activePreviewWin === "game" ? "window--active" : ""}`}
                     onClick={() => setActivePreviewWin("game")}
                     style={{ zIndex: activePreviewWin === "game" ? 10 : 2 }}
@@ -652,6 +657,8 @@ export default function MubixOS() {
           </div>
         </RevealSection>
 
+
+
         {/* ═══ EDUCATION ═══ */}
         <RevealSection className="section section--yellow" id="education">
           <SectionHeader eyebrow="Education" title="Computer engineering foundation" />
@@ -691,7 +698,7 @@ export default function MubixOS() {
               <p className="contact-subtext">
                 Have a project, collaboration idea, freelance work, or just want to connect? Send me a message through the contact form.
               </p>
-              
+
               <a
                 className="contact-primary-cta"
                 href={resume.googleFormUrl}
@@ -734,8 +741,8 @@ export default function MubixOS() {
           </div>
           <p>Designed & Built by Mohammed Mubashir</p>
           <div className="footer-quick-links" style={{ display: "flex", justifyContent: "center", gap: "1.5rem", margin: "1rem 0", fontFamily: "Space Mono, monospace", fontSize: "0.85rem" }}>
-            <a 
-              href="/mubix-os" 
+            <a
+              href="/mubix-os"
               onClick={(e) => { e.preventDefault(); navigateToPath("/mubix-os"); }}
               style={{ fontWeight: 700, color: "var(--neo-accent)", textDecoration: "underline" }}
             >
@@ -782,13 +789,38 @@ export default function MubixOS() {
           <div className="glitch-scanlines"></div>
         </div>
       )}
-      
+
       {isTransitioning && transitionType === 'comic-wipe' && (
         <div className="comic-wipe-overlay">
           <div className="comic-paper-bg"></div>
           <div className="comic-wipe-content">
             <div className="comic-stamp">MUBIX UI LOADED</div>
             <div className="comic-bounce-text">BACK TO REALITY</div>
+          </div>
+        </div>
+      )}
+
+      {/* Resume Preview Modal */}
+      {isResumeOpen && (
+        <div className="resume-modal-overlay" onClick={() => setIsResumeOpen(false)}>
+          <div className="resume-modal-card brutal-card" onClick={(e) => e.stopPropagation()}>
+            <div className="resume-modal-header">
+              <h3>Resume Preview</h3>
+              <button className="resume-modal-close" onClick={() => setIsResumeOpen(false)} aria-label="Close preview">
+                &times;
+              </button>
+            </div>
+            <div className="resume-modal-body">
+              <img src={resume.resumePreviewUrl} alt="Resume Preview" className="resume-preview-img" />
+            </div>
+            <div className="resume-modal-footer">
+              <NeoButton download href={resume.resumeUrl} icon={Download} variant="secondary">
+                Download PDF
+              </NeoButton>
+              <NeoButton href={resume.resumeUrl} icon={ExternalLink} variant="accent" target="_blank" rel="noopener noreferrer">
+                Open PDF
+              </NeoButton>
+            </div>
           </div>
         </div>
       )}

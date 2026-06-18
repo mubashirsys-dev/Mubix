@@ -885,16 +885,17 @@ a.contact-card:focus-visible {
     }
 
     .carousel-btn--prev {
-        left: -10px;
+        left: 4px;
     }
 
     .carousel-btn--next {
-        right: -10px;
+        right: 4px;
     }
 
     .carousel {
         gap: 0;
         position: relative;
+        padding-inline: 52px;
     }
 
     .floating-stack {
