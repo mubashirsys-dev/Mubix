@@ -873,31 +873,30 @@ a.contact-card:focus-visible {
     }
 }
 
-@media(max-width:480px) {
+@media(max-width:639px) {
     .carousel-btn {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         position: absolute;
-        top: auto;
-        bottom: -2.85rem;
-        transform: none;
+        top: 50%;
+        transform: translateY(-50%);
         z-index: 10;
         opacity: 0.95;
     }
 
     .carousel-btn--prev {
-        left: calc(50% - 75px);
+        left: -8px;
     }
 
     .carousel-btn--next {
-        right: calc(50% - 75px);
+        right: -8px;
     }
 
     .carousel {
         gap: 0;
         position: relative;
-        padding-inline: 0;
-        margin-bottom: 3.5rem;
+        padding-inline: 18px;
+        margin-bottom: var(--space-2);
     }
 
     .floating-stack {
