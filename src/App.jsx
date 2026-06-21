@@ -242,13 +242,13 @@ function App() {
                 {item.label}
               </a>
             ))}
-            <a
+            {/* <a
               href="/mubix-os"
               onClick={(e) => { e.preventDefault(); closeMenu(); navigateToPath("/mubix-os"); }}
               style={{ fontWeight: 800, color: "var(--neo-accent)" }}
             >
               MUBIX OS Lite
-            </a>
+            </a> */}
           </div>
 
           <div className="nav-controls">
@@ -464,7 +464,8 @@ function App() {
           </div>
         </RevealSection>
 
-        {/* ═══ NEXT-GEN MUBIX OS SHOWCASE ═══ */}
+        {/* ═══ NEXT-GEN MUBIX OS SHOWCASE (Commented Out) ═══ */}
+        {false && (
         <RevealSection className="mubixos-showcase-section" id="mubix-os-showcase">
           <div className="workspace-dotted-overlay"></div>
           <div className="mubixos-showcase-container">
@@ -656,6 +657,7 @@ export default function MubixOS() {
             </BrutalCard>
           </div>
         </RevealSection>
+        )}
 
 
 
@@ -740,7 +742,7 @@ export default function MubixOS() {
             <span className="footer-logo">MUBIX</span>
           </div>
           <p>Designed & Built by Mohammed Mubashir</p>
-          <div className="footer-quick-links" style={{ display: "flex", justifyContent: "center", gap: "1.5rem", margin: "1rem 0", fontFamily: "Space Mono, monospace", fontSize: "0.85rem" }}>
+          {/* <div className="footer-quick-links" style={{ display: "flex", justifyContent: "center", gap: "1.5rem", margin: "1rem 0", fontFamily: "Space Mono, monospace", fontSize: "0.85rem" }}>
             <a
               href="/mubix-os"
               onClick={(e) => { e.preventDefault(); navigateToPath("/mubix-os"); }}
@@ -748,7 +750,7 @@ export default function MubixOS() {
             >
               MUBIX OS Lite
             </a>
-          </div>
+          </div> */}
           <p className="seo-footer-text" style={{ fontSize: "0.8rem", opacity: 0.6, maxWidth: "600px", margin: "1rem auto 0", lineHeight: "1.5" }}>
             Mohammed Mubashir (Mubix) is a Full Stack & AI Developer, Prompt Engineer, and student pursuing BTech Computer Science in Aurangabad, Maharashtra, India. Specialized in AI website development, prompt wizard design, and search optimization solutions.
           </p>
