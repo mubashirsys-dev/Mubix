@@ -220,5 +220,5 @@ timeline
 </p>
 
 <p align="center">
-  <sub>Built with creativity, code, and high-performance Neo-brutalism. © 2026 MUBIX.</sub>
+  <sub>Built with creativity, code, and high-performance Neo-brutalism. © 2026 MUBIX (Updated).</sub>
 </p>
