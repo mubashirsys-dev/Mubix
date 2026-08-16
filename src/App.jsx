@@ -46,6 +46,7 @@ import { Chatbot } from "./components/Chatbot.jsx";
 import { VisitorCounter } from "./components/VisitorCounter.jsx";
 import ThemeToggle from "./components/ThemeToggle.jsx";
 import { MubixOsLanding } from "./components/MubixOsLanding.jsx";
+import { ContactModal } from "./components/ContactModal.jsx";
 import { resume } from "./data/resume.js";
 
 const navItems = [
@@ -109,6 +110,7 @@ function App() {
   const [activePreviewWin, setActivePreviewWin] = useState("editor");
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   // Client-side router history synchronization
   useEffect(() => {
@@ -288,8 +290,8 @@ function App() {
               <NeoButton download href={resume.resumeUrl} icon={Download} variant="secondary">
                 Download Resume
               </NeoButton>
-              <NeoButton href={resume.googleFormUrl}
-                icon={ExternalLink} variant="accent" target="_blank" rel="noopener noreferrer"
+              <NeoButton onClick={() => setIsContactModalOpen(true)}
+                icon={MessageCircle} variant="accent"
                 className="cta-highlight">
                 Start a Project
               </NeoButton>
@@ -701,20 +703,19 @@ export default function MubixOS() {
                 Have a project, collaboration idea, freelance work, or just want to connect? Send me a message through the contact form.
               </p>
 
-              <a
+              <button
+                type="button"
                 className="contact-primary-cta"
-                href={resume.googleFormUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={() => setIsContactModalOpen(true)}
               >
                 <div className="cta-icon-box">
-                  <ExternalLink size={24} aria-hidden="true" />
+                  <MessageCircle size={24} aria-hidden="true" />
                 </div>
                 <div className="cta-body">
                   <span className="cta-label">Get in Touch</span>
-                  <span className="cta-value">Open Google Form Contact ⚡</span>
+                  <span className="cta-value">Open Contact Form</span>
                 </div>
-              </a>
+              </button>
             </div>
             <div className="contact-grid">
               <ContactCard icon={Instagram} label="Instagram" value={`@${resume.instagram}`}
@@ -778,10 +779,14 @@ export default function MubixOS() {
       {/* ═══ FLOATING BUTTONS ═══ */}
       <div className="floating-stack" style={{ transform: `translateY(-${footerOffset}px)` }}>
         <Chatbot />
-        <a className="google-form-fab" href={resume.googleFormUrl}
-          target="_blank" rel="noopener noreferrer" aria-label="Send Message">
-          <ExternalLink size={24} />
-        </a>
+        <button
+          type="button"
+          className="contact-fab"
+          onClick={() => setIsContactModalOpen(true)}
+          aria-label="Send Message"
+        >
+          <MessageCircle size={24} />
+        </button>
       </div>
 
       {/* Transition Overlays */}
@@ -826,6 +831,9 @@ export default function MubixOS() {
           </div>
         </div>
       )}
+
+      {/* Contact Form Modal */}
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </div>
   );
 }

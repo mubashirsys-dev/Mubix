@@ -3,7 +3,6 @@ export const resume = {
   shortName: "Mubix",
   role: "Full Stack & AI Developer | Founder of Mubix",
   location: "Aurangabad, Maharashtra, India",
-  googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd0llGCeKzgnvWg5By9XFV8qqHKB5lsCQi23V_cteCY8nA1ew/viewform",
   instagram: "mubashir.o_0",
   github: "https://github.com/mubashirsys-dev",
   x: "https://x.com/mubashir_o_0",

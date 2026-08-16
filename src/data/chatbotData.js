@@ -45,11 +45,11 @@ const responses = [
   },
   {
     keywords: ["freelance", "collaboration", "hire", "open to work", "work together"],
-    answer: "Yes, I am actively open for freelance work, web design projects, AI integration work, and technical collaborations. You can message me via the Google Form on the contact section! ⚡",
+    answer: "Yes, I am actively open for freelance work, web design projects, AI integration work, and technical collaborations. You can message me via the contact form on the website! ⚡",
   },
   {
     keywords: ["contact", "reach", "email", "message", "socials", "links"],
-    answer: "You can find all my social links (LinkedIn, GitHub, Instagram, Twitter) in the contact section. To send a direct inquiry, click the 'Start a Project' or floating message button to open my contact Google Form.",
+    answer: "You can find all my social links (LinkedIn, GitHub, Instagram, Twitter) in the contact section. To send a direct inquiry, click the 'Start a Project' or floating message button to open my contact form.",
   },
   {
     keywords: ["projects", "what have you built", "portfolio projects", "builds"],

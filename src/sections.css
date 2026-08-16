@@ -67,7 +67,7 @@ a.contact-card:focus-visible {
     box-shadow: var(--shadow-medium, 6px 6px 0 0 var(--neo-ink));
 }
 
-/* ════ PRIMARY CTA (GOOGLE FORM) REDESIGN ════ */
+/* ════ PRIMARY CTA (NATIVE CONTACT FORM) REDESIGN ════ */
 .contact-primary-cta {
     display: flex;
     align-items: center;
@@ -619,7 +619,8 @@ a.contact-card:focus-visible {
     cursor: not-allowed
 }
 
-/* ── Google Form FAB ── */
+/* ── Contact FAB ── */
+.contact-fab,
 .google-form-fab {
     width: 60px;
     height: 60px;
@@ -634,8 +635,10 @@ a.contact-card:focus-visible {
     transition: transform .2s, box-shadow .2s;
     animation: formPulse 2.5s ease infinite;
     text-decoration: none;
+    cursor: pointer;
 }
 
+.contact-fab:hover,
 .google-form-fab:hover {
     transform: scale(1.12);
     box-shadow: 10px 10px 0 0 var(--neo-ink)
@@ -904,6 +907,7 @@ a.contact-card:focus-visible {
         right: var(--space-2)
     }
 
+    .contact-fab,
     .google-form-fab {
         width: 52px;
         height: 52px
@@ -1048,6 +1052,7 @@ a.contact-card:focus-visible {
 }
 
 :root.dark-theme .chatbot-fab,
+:root.dark-theme .contact-fab,
 :root.dark-theme .google-form-fab {
     border-color: var(--neo-accent);
     background: #0a0a0f;
@@ -1055,6 +1060,7 @@ a.contact-card:focus-visible {
 }
 
 :root.dark-theme .chatbot-fab:hover,
+:root.dark-theme .contact-fab:hover,
 :root.dark-theme .google-form-fab:hover {
     box-shadow: 0 0 15px var(--neo-accent);
 }
